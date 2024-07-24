@@ -1,0 +1,15 @@
+{
+  "TITLE": "Good Properties",
+  "LOGIN": "Login",
+  "REGISTER": "Register",
+  "TOS": "Terms of Use",
+  "PRIVACY_POLICY": "Privacy Policy",
+  "EMAIL": "E-Mail Address",
+  "PASSWORD": "Password",
+  "REPEAT_PASSWORD": "Repeat Password",
+  "PAGES": {
+    "REGISTER": {
+      "REGISTER_ON": "Register on Good Properties"
+    }
+  }
+}

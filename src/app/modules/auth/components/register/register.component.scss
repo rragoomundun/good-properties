@@ -1,0 +1,23 @@
+#background {
+  background-image: url("/assets/images/houses.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  .col-12.col-sm-8.col-md-6 {
+    margin: auto;
+
+    .card {
+      margin-top: 100px;
+      margin-bottom: 100px;
+
+      .card-body {
+        .card-title,
+        .card-subtitle {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
