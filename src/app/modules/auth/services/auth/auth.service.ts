@@ -15,8 +15,8 @@ export class AuthService {
   register(
     email: string,
     password: string,
-    repeatedPassword: string
-  ): Observable<any> {
+    repeatedPassword: string,
+  ): Observable<Object> {
     const params = {
       email,
       password,
@@ -24,5 +24,12 @@ export class AuthService {
     };
 
     return this.http.post(`${this.API_PREFIX}/register`, params);
+  }
+
+  registerConfirm(confirmationToken: string): Observable<Object> {
+    return this.http.post(
+      `${this.API_PREFIX}/register/confirm/${confirmationToken}`,
+      {},
+    );
   }
 }

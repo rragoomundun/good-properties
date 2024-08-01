@@ -16,4 +16,8 @@ export class TranslationService {
   changeLang(lang: string) {
     this.translateService.use(lang);
   }
+
+  instant(key: string) {
+    return this.translateService.instant(key);
+  }
 }

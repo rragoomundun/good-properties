@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { RegisterState } from './register.state';
+import { RegisterConfirmState } from './register-confirm.state';
 
 import * as AuthActions from './actions';
 
@@ -26,5 +27,25 @@ export const registerReducer = createReducer(
     ...state,
     status: Status.ERROR,
     errors,
+  })),
+);
+
+export const initialRegisterConfirmState: RegisterConfirmState = {
+  status: Status.IN_PROGRESS,
+};
+
+export const registerConfirmReducer = createReducer(
+  initialRegisterConfirmState,
+  on(AuthActions.registerConfirm, (state) => ({
+    ...state,
+    status: Status.IN_PROGRESS,
+  })),
+  on(AuthActions.registerConfirmSuccess, (state) => ({
+    ...state,
+    status: Status.SUCCESS,
+  })),
+  on(AuthActions.registerConfirmFailed, (state) => ({
+    ...state,
+    status: Status.ERROR,
   })),
 );

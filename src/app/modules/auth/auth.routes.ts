@@ -14,13 +14,15 @@ const routes: Routes = [
       {
         path: 'confirm/:confirmationToken',
         component: RegisterConfirmComponent,
+        data: { title: 'PAGES.REGISTER_CONFIRM.TITLE' },
       },
-      { path: '**', component: RegisterComponent },
+      { path: '**', component: RegisterComponent, data: { title: 'REGISTER' } },
     ],
   },
   {
     path: 'login',
     component: LoginComponent,
+    data: { title: 'LOGIN' },
   },
   {
     path: 'password',
@@ -28,10 +30,12 @@ const routes: Routes = [
       {
         path: 'forgotten',
         component: PasswordForgottenComponent,
+        data: { title: 'PAGES.PASSWORD_FORGOTTEN.TITLE' },
       },
       {
         path: 'reset/:resetPasswordToken',
         component: ResetPasswordComponent,
+        data: { title: 'PAGES.RESET_PASSWORD.TITLE' },
       },
       {
         path: '**',
