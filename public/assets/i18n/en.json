@@ -1,0 +1,32 @@
+{
+  "TITLE": "Good Properties",
+  "LOGIN": "Login",
+  "REGISTER": "Register",
+  "REGISTERING": "Registering",
+  "TOS": "Terms of Use",
+  "PRIVACY_POLICY": "Privacy Policy",
+  "EMAIL": "E-Mail Address",
+  "PASSWORD": "Password",
+  "REPEAT_PASSWORD": "Repeat Password",
+  "ERRORS": {
+    "EMAIL": {
+      "INVALID_EMAIL": "Please add a valid e-mail.",
+      "EMAIL_IN_USE": "The email address is already in use."
+    },
+    "PASSWORD": {
+      "PASSWORD_MIN_LENGTH": "The password has to have at least 12 characters."
+    },
+    "REPEATED_PASSWORD": {
+      "REPEATED_PASSWORD_NO_MATCH": "The repeated password doesn't match the password."
+    }
+  },
+  "PAGES": {
+    "REGISTER": {
+      "REGISTER_ON": "Register on Good Properties",
+      "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",
+      "ERRORS": {
+        "ACCOUNT_CREATION": "Impossible to create your account. Try again later."
+      }
+    }
+  }
+}
