@@ -1,0 +1,23 @@
+<label [for]="id()" class="form-label">
+  @if (icon()) {
+    <span [class]="icon()"></span>&nbsp;
+  }
+
+  <span>{{ label() ?? "" | translate }}</span>
+</label>
+
+<div [class.has-validation]="error()" class="input-group">
+  <input
+    [class.is-invalid]="error()"
+    [id]="id()"
+    [type]="type()"
+    [formControlName]="formControlName() ?? ''"
+    class="form-control"
+  />
+
+  @if (error()) {
+    <div class="invalid-feedback">
+      {{ error() ?? "" | translate }}
+    </div>
+  }
+</div>
