@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  PLATFORM_ID,
-  Inject,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -17,6 +11,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { InputComponent } from '../../../../shared/components/input/input.component';
+
+import { PlatformService } from '../../../../shared/services/platform/platform.service';
 
 import * as AuthActions from '../../store/actions';
 import {
@@ -47,8 +43,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
     private store: Store<AppState>,
+    private platformService: PlatformService,
   ) {
     this.status$ = this.store.select(selectRegisterStatus);
     this.errors$ = this.store.select(selectRegisterErrors);
@@ -88,7 +84,7 @@ export class RegisterComponent implements OnInit {
 
   @HostListener('window:resize')
   setBackgroundImage() {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       const backgroundEl = <HTMLDivElement>(
         document.querySelector('#background')
       );
