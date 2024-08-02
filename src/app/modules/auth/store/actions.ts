@@ -20,3 +20,13 @@ export const registerConfirmSuccess = createAction(
 export const registerConfirmFailed = createAction(
   '[Register Confirm Page] Register Confirm Failed',
 );
+
+export const login = createAction(
+  '[Login Page] Login',
+  props<{ email: string; password: string }>(),
+);
+export const loginSuccess = createAction('[Login Page] Login Success');
+export const loginFailed = createAction(
+  '[Login Page] Login Failed',
+  props<{ errors: any }>(),
+);

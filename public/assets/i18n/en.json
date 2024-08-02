@@ -28,6 +28,14 @@
         "ACCOUNT_CREATION": "Impossible to create your account. Try again later."
       }
     },
+    "LOGIN": {
+      "LOGIN": "Login...",
+      "LOGIN_ON": "Login on Good Properties",
+      "ERRORS": {
+        "INVALID": "The data entered is invalid.",
+        "UNCONFIRMED": "This account is unconfirmed."
+      }
+    },
     "REGISTER_CONFIRM": {
       "TITLE": "Account Confirmation",
       "CONFIRMING": "Confirming your account...",

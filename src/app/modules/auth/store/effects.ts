@@ -44,4 +44,19 @@ export class AuthEffects {
       ),
     ),
   );
+
+  login$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.login),
+      exhaustMap((action) =>
+        this.authService.login(action.email, action.password).pipe(
+          map(() => AuthActions.loginSuccess()),
+          tap(() => this.router.navigate(['/'])),
+          catchError((error) =>
+            of(AuthActions.loginFailed({ errors: error.error })),
+          ),
+        ),
+      ),
+    ),
+  );
 }
