@@ -1,5 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -42,24 +41,6 @@ export class RegisterConfirmComponent implements OnInit {
       const { confirmationToken } = this.activatedRoute.snapshot.params;
 
       this.store.dispatch(AuthActions.registerConfirm({ confirmationToken }));
-    }
-
-    this.setBackgroundImage();
-  }
-
-  @HostListener('window:resize')
-  setBackgroundImage() {
-    if (this.platformService.isPlatformBrowser()) {
-      const backgroundEl = <HTMLDivElement>(
-        document.querySelector('#background')
-      );
-
-      backgroundEl.style.height = '';
-
-      const mainHeight = document.querySelector('main')?.clientHeight;
-
-      backgroundEl.style.height = mainHeight + 'px';
-      backgroundEl.style.backgroundImage = 'url("/assets/images/houses.jpeg")';
     }
   }
 }

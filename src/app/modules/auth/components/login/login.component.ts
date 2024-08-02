@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -10,8 +10,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { InputComponent } from '../../../../shared/components/input/input.component';
-
-import { PlatformService } from '../../../../shared/services/platform/platform.service';
 
 import { AppState } from '../../../../store/app.store';
 
@@ -30,7 +28,7 @@ import { ErrorUtil } from '../../../../shared/utils/error.util';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   status$: Observable<Status>;
   errors$: Observable<any>;
 
@@ -39,10 +37,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(
-    private store: Store<AppState>,
-    private platformService: PlatformService,
-  ) {
+  constructor(private store: Store<AppState>) {
     this.status$ = this.store.select(selectLoginStatus);
     this.errors$ = this.store.select(selectLoginErrors);
 
@@ -65,26 +60,6 @@ export class LoginComponent implements OnInit {
     return ErrorUtil.getInputError('ERRORS.PASSWORD.', this.errors, [
       'PASSWORD_MIN_LENGTH',
     ]);
-  }
-
-  ngOnInit(): void {
-    this.setBackgroundImage();
-  }
-
-  @HostListener('window:resize')
-  setBackgroundImage() {
-    if (this.platformService.isPlatformBrowser()) {
-      const backgroundEl = <HTMLDivElement>(
-        document.querySelector('#background')
-      );
-
-      backgroundEl.style.height = '';
-
-      const mainHeight = document.querySelector('main')?.clientHeight;
-
-      backgroundEl.style.height = mainHeight + 'px';
-      backgroundEl.style.backgroundImage = 'url("/assets/images/houses.jpeg")';
-    }
   }
 
   onLoginClick(): void {
