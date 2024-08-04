@@ -1,6 +1,8 @@
-#background {
+:host {
+  flex: 1;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url("/assets/images/houses.jpeg");
 }
 
 .container {

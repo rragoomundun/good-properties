@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { Status } from './shared/enums/status.enum';
+
+import { AppState } from './store/app.store';
+
+import * as UserActions from './shared/store/user/actions';
 
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
@@ -17,7 +24,12 @@ import { TranslationService } from './shared/services/translation/translation.se
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  userStatus$: Observable<Status>;
+
+  userStatus: Status;
+
   constructor(
+    private store: Store<AppState>,
     private router: Router,
     private titleService: Title,
     private translationService: TranslationService,
@@ -49,5 +61,7 @@ export class AppComponent implements OnInit {
           );
         }
       });
+
+    this.store.dispatch(UserActions.getCurrentUser());
   }
 }

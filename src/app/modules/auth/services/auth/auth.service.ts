@@ -32,4 +32,13 @@ export class AuthService {
       {},
     );
   }
+
+  login(email: string, password: string): Observable<Object> {
+    const params = {
+      email,
+      password,
+    };
+
+    return this.http.post(`${this.API_PREFIX}/login`, params);
+  }
 }

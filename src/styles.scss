@@ -8,6 +8,8 @@ app-root {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: auto;
   margin-top: 0;

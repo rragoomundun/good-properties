@@ -3,6 +3,7 @@
   "LOGIN": "Login",
   "REGISTER": "Register",
   "REGISTERING": "Registering",
+  "LOGOUT": "Logout",
   "TOS": "Terms of Use",
   "PRIVACY_POLICY": "Privacy Policy",
   "EMAIL": "E-Mail Address",
@@ -26,6 +27,14 @@
       "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",
       "ERRORS": {
         "ACCOUNT_CREATION": "Impossible to create your account. Try again later."
+      }
+    },
+    "LOGIN": {
+      "LOGIN": "Login...",
+      "LOGIN_ON": "Login on Good Properties",
+      "ERRORS": {
+        "INVALID": "The data entered is invalid.",
+        "UNCONFIRMED": "This account is unconfirmed."
       }
     },
     "REGISTER_CONFIRM": {

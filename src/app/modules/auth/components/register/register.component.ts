@@ -1,11 +1,5 @@
-import {
-  Component,
-  OnInit,
-  PLATFORM_ID,
-  Inject,
-  HostListener,
-} from '@angular/core';
-import { AsyncPipe, isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   FormGroup,
@@ -37,7 +31,7 @@ import { ErrorUtil } from '../../../../shared/utils/error.util';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   status$: Observable<Status>;
   errors$: Observable<any>;
 
@@ -46,10 +40,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
-    private store: Store<AppState>,
-  ) {
+  constructor(private store: Store<AppState>) {
     this.status$ = this.store.select(selectRegisterStatus);
     this.errors$ = this.store.select(selectRegisterErrors);
 
@@ -80,26 +71,6 @@ export class RegisterComponent implements OnInit {
     return ErrorUtil.getInputError('ERRORS.REPEATED_PASSWORD.', this.errors, [
       'REPEATED_PASSWORD_NO_MATCH',
     ]);
-  }
-
-  ngOnInit(): void {
-    this.setBackgroundImage();
-  }
-
-  @HostListener('window:resize')
-  setBackgroundImage() {
-    if (isPlatformBrowser(this.platformId)) {
-      const backgroundEl = <HTMLDivElement>(
-        document.querySelector('#background')
-      );
-
-      backgroundEl.style.height = '';
-
-      const mainHeight = document.querySelector('main')?.clientHeight;
-
-      backgroundEl.style.height = mainHeight + 'px';
-      backgroundEl.style.backgroundImage = 'url("/assets/images/houses.jpeg")';
-    }
   }
 
   onRegisterClick() {

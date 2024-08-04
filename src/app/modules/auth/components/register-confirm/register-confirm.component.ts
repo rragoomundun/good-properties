@@ -1,15 +1,10 @@
-import {
-  Component,
-  OnInit,
-  PLATFORM_ID,
-  Inject,
-  HostListener,
-} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { PlatformService } from '../../../../shared/services/platform/platform.service';
 
 import { Status } from '../../../../shared/enums/status.enum';
 
@@ -32,9 +27,9 @@ export class RegisterConfirmComponent implements OnInit {
   status: Status;
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
     private store: Store<AppState>,
     private activatedRoute: ActivatedRoute,
+    private platformService: PlatformService,
   ) {
     this.status$ = this.store.select(selectRegisterConfirmStatus);
 
@@ -42,28 +37,10 @@ export class RegisterConfirmComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       const { confirmationToken } = this.activatedRoute.snapshot.params;
 
       this.store.dispatch(AuthActions.registerConfirm({ confirmationToken }));
-    }
-
-    this.setBackgroundImage();
-  }
-
-  @HostListener('window:resize')
-  setBackgroundImage() {
-    if (isPlatformBrowser(this.platformId)) {
-      const backgroundEl = <HTMLDivElement>(
-        document.querySelector('#background')
-      );
-
-      backgroundEl.style.height = '';
-
-      const mainHeight = document.querySelector('main')?.clientHeight;
-
-      backgroundEl.style.height = mainHeight + 'px';
-      backgroundEl.style.backgroundImage = 'url("/assets/images/houses.jpeg")';
     }
   }
 }
