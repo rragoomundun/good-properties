@@ -11,6 +11,8 @@
   "REPEAT_PASSWORD": "Repeat Password",
   "SUBMIT": "Submit",
   "SUBMITTING": "Submitting...",
+  "MODIFY": "Modify",
+  "MODIFYING": "Modifying...",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -59,7 +61,13 @@
       }
     },
     "RESET_PASSWORD": {
-      "TITLE": "Reset Password"
+      "TITLE": "Reset Password",
+      "RESET": "Reset your password",
+      "ENTER_PASSWORD": "Enter your new password below in order to reset it.",
+      "SUCCESS": "Your password has been changed. You are going to be redirected...",
+      "ERRORS": {
+        "INVALID_TOKEN": "Impossible to set a new password."
+      }
     }
   }
 }

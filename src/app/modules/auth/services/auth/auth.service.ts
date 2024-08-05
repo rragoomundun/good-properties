@@ -53,4 +53,21 @@ export class AuthService {
     const params = { email };
     return this.http.post(`${this.API_PREFIX}/password/forgot`, params);
   }
+
+  resetPasword(
+    password: string,
+    repeatedPassword: string,
+    resetPasswordToken: string,
+  ): Observable<Object> {
+    const params = {
+      password,
+      repeatedPassword,
+    };
+
+    return this.http.post(
+      `${this.API_PREFIX}/password/reset/${resetPasswordToken}`,
+      params,
+      { withCredentials: true },
+    );
+  }
 }

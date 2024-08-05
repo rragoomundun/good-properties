@@ -102,4 +102,28 @@ export class AuthEffects {
       ),
     ),
   );
+
+  resetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.resetPassword),
+      exhaustMap((action) =>
+        this.authService
+          .resetPasword(
+            action.password,
+            action.repeatedPassword,
+            action.resetPasswordToken,
+          )
+          .pipe(
+            concatMap(() => [
+              AuthActions.resetPasswordSuccess(),
+              UserActions.getCurrentUser(),
+            ]),
+            tap(() => setTimeout(() => this.router.navigate(['/']), 3000)),
+            catchError((error) =>
+              of(AuthActions.resetPasswordFailed({ errors: error.error })),
+            ),
+          ),
+      ),
+    ),
+  );
 }

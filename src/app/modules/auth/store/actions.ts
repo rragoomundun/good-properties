@@ -44,3 +44,19 @@ export const passwordForgottenFailed = createAction(
   '[Password Forgotten Page] Password Forgotten Failed',
   props<{ errors: any }>(),
 );
+
+export const resetPassword = createAction(
+  '[Reset Password Page] Reset Password',
+  props<{
+    password: string;
+    repeatedPassword: string;
+    resetPasswordToken: string;
+  }>(),
+);
+export const resetPasswordSuccess = createAction(
+  '[Reset Password Page] Reset Password Success',
+);
+export const resetPasswordFailed = createAction(
+  '[Reset Password Page] Reset Password Failed',
+  props<{ errors: any }>(),
+);

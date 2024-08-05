@@ -8,6 +8,7 @@ import * as AuthActions from './actions';
 
 import { Status } from '../../../shared/enums/status.enum';
 import { PasswordForgottenState } from './password-forgotten.state';
+import { ResetPasswordState } from './reset-password.state';
 
 export const initialRegisterState: RegisterState = {
   status: Status.PENDING,
@@ -87,9 +88,33 @@ export const passwordForgottenReducer = createReducer(
   })),
   on(AuthActions.passwordForgottenSuccess, (state) => ({
     ...state,
+    status: Status.SUCCESS,
     errors: null,
   })),
   on(AuthActions.passwordForgottenFailed, (state, { errors }) => ({
+    ...state,
+    status: Status.ERROR,
+    errors,
+  })),
+);
+
+export const initialResetPasswordState: ResetPasswordState = {
+  status: Status.PENDING,
+  errors: null,
+};
+
+export const resetPasswordReducer = createReducer(
+  initialResetPasswordState,
+  on(AuthActions.resetPassword, (state) => ({
+    ...state,
+    status: Status.IN_PROGRESS,
+  })),
+  on(AuthActions.resetPasswordSuccess, (state) => ({
+    ...state,
+    status: Status.SUCCESS,
+    errors: null,
+  })),
+  on(AuthActions.resetPasswordFailed, (state, { errors }) => ({
     ...state,
     status: Status.ERROR,
     errors,

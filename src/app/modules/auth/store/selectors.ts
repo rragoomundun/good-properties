@@ -4,6 +4,7 @@ import { RegisterState } from './register.state';
 import { RegisterConfirmState } from './register-confirm.state';
 import { LoginState } from './login.state';
 import { PasswordForgottenState } from './password-forgotten.state';
+import { ResetPasswordState } from './reset-password.state';
 
 import { AppState } from '../../../store/app.store';
 
@@ -48,4 +49,16 @@ export const selectPasswordForgottenStatus = createSelector(
 export const selectPasswordForgottenErrors = createSelector(
   passwordForgottenState,
   (state: PasswordForgottenState) => state.errors,
+);
+
+const resetPasswordState = (state: AppState) => state.resetPassword;
+
+export const selectResetPasswordStatus = createSelector(
+  resetPasswordState,
+  (state: ResetPasswordState) => state.status,
+);
+
+export const selectResetPasswordErrors = createSelector(
+  resetPasswordState,
+  (state: ResetPasswordState) => state.errors,
 );
