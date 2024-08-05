@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -24,7 +25,7 @@ import { ErrorUtil } from '../../../../shared/utils/error.util';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [TranslateModule, ReactiveFormsModule, InputComponent],
+  imports: [TranslateModule, ReactiveFormsModule, RouterModule, InputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

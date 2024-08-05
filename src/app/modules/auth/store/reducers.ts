@@ -7,6 +7,7 @@ import { LoginState } from './login.state';
 import * as AuthActions from './actions';
 
 import { Status } from '../../../shared/enums/status.enum';
+import { PasswordForgottenState } from './password-forgotten.state';
 
 export const initialRegisterState: RegisterState = {
   status: Status.PENDING,
@@ -67,6 +68,28 @@ export const loginReducer = createReducer(
     errors: null,
   })),
   on(AuthActions.loginFailed, (state, { errors }) => ({
+    ...state,
+    status: Status.ERROR,
+    errors,
+  })),
+);
+
+export const initialPasswordForgottenState: PasswordForgottenState = {
+  status: Status.PENDING,
+  errors: null,
+};
+
+export const passwordForgottenReducer = createReducer(
+  initialLoginState,
+  on(AuthActions.passwordForgotten, (state) => ({
+    ...state,
+    status: Status.IN_PROGRESS,
+  })),
+  on(AuthActions.passwordForgottenSuccess, (state) => ({
+    ...state,
+    errors: null,
+  })),
+  on(AuthActions.passwordForgottenFailed, (state, { errors }) => ({
     ...state,
     status: Status.ERROR,
     errors,

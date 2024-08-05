@@ -30,6 +30,7 @@ export class AuthService {
     return this.http.post(
       `${this.API_PREFIX}/register/confirm/${confirmationToken}`,
       {},
+      { withCredentials: true },
     );
   }
 
@@ -43,6 +44,13 @@ export class AuthService {
   }
 
   logout(): Observable<Object> {
-    return this.http.get(`${this.API_PREFIX}/logout`);
+    return this.http.get(`${this.API_PREFIX}/logout`, {
+      withCredentials: true,
+    });
+  }
+
+  passwordForgotten(email: string): Observable<Object> {
+    const params = { email };
+    return this.http.post(`${this.API_PREFIX}/password/forgot`, params);
   }
 }

@@ -9,10 +9,13 @@
   "EMAIL": "E-Mail Address",
   "PASSWORD": "Password",
   "REPEAT_PASSWORD": "Repeat Password",
+  "SUBMIT": "Submit",
+  "SUBMITTING": "Submitting...",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
-      "EMAIL_IN_USE": "The email address is already in use."
+      "EMAIL_IN_USE": "The email address is already in use.",
+      "EMAIL_NOT_FOUND": "No account is associated to this e-mail address."
     },
     "PASSWORD": {
       "PASSWORD_MIN_LENGTH": "The password has to have at least 12 characters."
@@ -32,6 +35,7 @@
     "LOGIN": {
       "LOGIN": "Login...",
       "LOGIN_ON": "Login on Good Properties",
+      "PASSWORD_FORGOTTEN": "Password forgotten?",
       "ERRORS": {
         "INVALID": "The data entered is invalid.",
         "UNCONFIRMED": "This account is unconfirmed."
@@ -44,7 +48,15 @@
       "ERROR": "Impossible to confirm this account."
     },
     "PASSWORD_FORGOTTEN": {
-      "TITLE": "Password Forgotten"
+      "TITLE": "Password Forgotten",
+      "RECOVER": "Recover after forgetting my password",
+      "ENTER_EMAIL": "Enter your e-mail address below in order to recover your account.",
+      "SUCCESS": "An email has been sent to this adress. Please consult it in order to recover your account.",
+      "ERRORS": {
+        "UNCONFIRMED": "This account is unconfirmed.",
+        "ALREADY_RECOVERING": "A recovery procedure is already is progress.",
+        "EMAIL_SENDING_FAILED": "Cannot send recovery e-mail."
+      }
     },
     "RESET_PASSWORD": {
       "TITLE": "Reset Password"

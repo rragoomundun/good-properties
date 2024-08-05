@@ -1,7 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, exhaustMap, of, tap, mergeMap } from 'rxjs';
+import {
+  catchError,
+  map,
+  exhaustMap,
+  of,
+  tap,
+  mergeMap,
+  concatMap,
+} from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AuthService } from '../services/auth/auth.service';
@@ -40,7 +48,10 @@ export class AuthEffects {
       ofType(AuthActions.registerConfirm),
       exhaustMap((action) =>
         this.authService.registerConfirm(action.confirmationToken).pipe(
-          map(() => AuthActions.registerConfirmSuccess()),
+          concatMap(() => [
+            AuthActions.registerConfirmSuccess(),
+            UserActions.getCurrentUser(),
+          ]),
           tap(() => setTimeout(() => this.router.navigate(['/']), 3000)),
           catchError((error) => of(AuthActions.registerConfirmFailed())),
         ),
@@ -73,6 +84,20 @@ export class AuthEffects {
         this.authService.logout().pipe(
           map(() => UserActions.clearCurrentUser()),
           tap(() => this.cookieService.delete('token', '/')),
+        ),
+      ),
+    ),
+  );
+
+  passwordForgotten$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.passwordForgotten),
+      exhaustMap((action) =>
+        this.authService.passwordForgotten(action.email).pipe(
+          map(() => AuthActions.passwordForgottenSuccess()),
+          catchError((error) =>
+            of(AuthActions.passwordForgottenFailed({ errors: error.error })),
+          ),
         ),
       ),
     ),

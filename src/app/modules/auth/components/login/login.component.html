@@ -36,6 +36,12 @@
                 ></app-input>
               </div>
 
+              <div class="text-end mb-3">
+                <a routerLink="/auth/password/forgotten">
+                  {{ "PAGES.LOGIN.PASSWORD_FORGOTTEN" | translate }}
+                </a>
+              </div>
+
               @if (errors && errors.type !== "INVALID_PARAMETERS") {
                 <div class="text-center">
                   <p class="text-danger">

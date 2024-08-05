@@ -32,3 +32,15 @@ export const loginFailed = createAction(
 );
 
 export const logout = createAction('[Header Component] Logout');
+
+export const passwordForgotten = createAction(
+  '[Password Forgotten Page] Password Forgotten',
+  props<{ email: string }>(),
+);
+export const passwordForgottenSuccess = createAction(
+  '[Password Forgotten Page] Password Forgotten Success',
+);
+export const passwordForgottenFailed = createAction(
+  '[Password Forgotten Page] Password Forgotten Failed',
+  props<{ errors: any }>(),
+);
