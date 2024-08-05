@@ -30,7 +30,13 @@
             </li>
           } @else {
             <li class="nav-item">
-              <a class="nav-link">{{ "LOGOUT" | translate }}</a>
+              <a
+                (click)="onLogoutClick()"
+                href="javascript:void(0)"
+                class="nav-link"
+              >
+                {{ "LOGOUT" | translate }}
+              </a>
             </li>
           }
         </ul>

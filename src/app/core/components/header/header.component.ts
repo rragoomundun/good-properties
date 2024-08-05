@@ -9,6 +9,8 @@ import { AppState } from '../../../store/app.store';
 
 import { selectUser } from '../../../shared/store/user/selectors';
 
+import * as AuthActions from '../../../modules/auth/store/actions';
+
 import { User } from '../../../shared/models/User.model';
 
 @Component({
@@ -27,5 +29,9 @@ export class HeaderComponent {
     this.user$ = this.store.select(selectUser);
 
     this.user$.subscribe((user) => (this.user = user));
+  }
+
+  onLogoutClick() {
+    this.store.dispatch(AuthActions.logout());
   }
 }

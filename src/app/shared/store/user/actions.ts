@@ -10,3 +10,5 @@ export const getCurrentUserSuccess = createAction(
 export const getCurrentUserFailed = createAction(
   '[User] Get Current User Failed',
 );
+
+export const clearCurrentUser = createAction('[User] Clear Current User');

@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, exhaustMap, of, tap, mergeMap } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AuthService } from '../services/auth/auth.service';
 
@@ -14,6 +15,7 @@ export class AuthEffects {
 
   constructor(
     private router: Router,
+    private cookieService: CookieService,
     private authService: AuthService,
   ) {}
 
@@ -59,6 +61,18 @@ export class AuthEffects {
           catchError((error) =>
             of(AuthActions.loginFailed({ errors: error.error })),
           ),
+        ),
+      ),
+    ),
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.logout),
+      exhaustMap(() =>
+        this.authService.logout().pipe(
+          map(() => UserActions.clearCurrentUser()),
+          tap(() => this.cookieService.delete('token', '/')),
         ),
       ),
     ),

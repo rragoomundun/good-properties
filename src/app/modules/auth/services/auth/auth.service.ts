@@ -41,4 +41,8 @@ export class AuthService {
 
     return this.http.post(`${this.API_PREFIX}/login`, params);
   }
+
+  logout(): Observable<Object> {
+    return this.http.get(`${this.API_PREFIX}/logout`);
+  }
 }

@@ -26,4 +26,8 @@ export const userReducer = createReducer(
     ...state,
     status: Status.ERROR,
   })),
+  on(UserActions.clearCurrentUser, (state) => ({
+    ...state,
+    user: null,
+  })),
 );
