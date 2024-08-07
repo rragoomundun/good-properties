@@ -1,0 +1,84 @@
+<div id="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-8 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ "REGISTER" | translate }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+              {{ "PAGES.REGISTER.REGISTER_ON" | translate }}
+            </h6>
+
+            <hr />
+
+            <form [formGroup]="registerForm">
+              <div class="mb-3">
+                <app-input
+                  [id]="'email-input'"
+                  [icon]="'fa-solid fa-envelope'"
+                  [label]="'EMAIL'"
+                  [type]="'email'"
+                  [formControlName]="'email'"
+                  [error]="emailError"
+                ></app-input>
+              </div>
+
+              <div class="mb-3">
+                <app-input
+                  [id]="'password-input'"
+                  [icon]="'fa-solid fa-lock'"
+                  [label]="'PASSWORD'"
+                  [type]="'password'"
+                  [formControlName]="'password'"
+                  [error]="passwordError"
+                ></app-input>
+              </div>
+
+              <div class="mb-3">
+                <app-input
+                  [id]="'repeated-password-input'"
+                  [icon]="'fa-solid fa-lock'"
+                  [label]="'REPEAT_PASSWORD'"
+                  [type]="'password'"
+                  [formControlName]="'repeatedPassword'"
+                  [error]="repeatedPasswordError"
+                ></app-input>
+              </div>
+
+              @if (errors && errors.type === "ACCOUNT_CREATION") {
+                <div class="text-center">
+                  <p class="text-danger">
+                    {{ "PAGES.REGISTER.ERRORS.ACCOUNT_CREATION" | translate }}
+                  </p>
+                </div>
+              }
+
+              <div class="text-center">
+                @if (["PENDING", "ERROR"].includes(status)) {
+                  <button
+                    [disabled]="registerForm.valid === false"
+                    (click)="onRegisterClick()"
+                    class="btn btn-primary"
+                  >
+                    {{ "REGISTER" | translate }}
+                  </button>
+                } @else if (status === "IN_PROGRESS") {
+                  <button [disabled]="true" class="btn btn-primary">
+                    <span class="fa-solid fa-spinner fa-spin"></span>
+                    {{ "REGISTERING" | translate }}
+                  </button>
+                } @else {
+                  <p class="text-success">
+                    {{ "PAGES.REGISTER.REGISTRATION_SUCCESSFUL" | translate }}
+                  </p>
+                }
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.container {
+  max-width: 100%;
+  padding-bottom: 1rem;
+
+  hr {
+    margin-top: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  div {
+    @media screen and (width >= 768px) {
+      > div:nth-child(1) {
+        min-width: 150px;
+        max-width: 150px;
+
+        a {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    > div:nth-child(1) {
+      a {
+        font-size: 1.2rem;
+      }
+    }
+
+    > div:nth-child(2) {
+      flex-grow: 1;
+
+      a {
+        font-size: 1.5rem;
+      }
+
+      a:not(:first-of-type) {
+        margin-left: 1rem;
+      }
+    }
+
+    > div:nth-child(3) {
+      flex-grow: 1;
+
+      div {
+        margin-left: auto;
+      }
+    }
+  }
+}
