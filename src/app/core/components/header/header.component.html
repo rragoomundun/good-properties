@@ -30,13 +30,44 @@
             </li>
           } @else {
             <li class="nav-item">
-              <a
-                (click)="onLogoutClick()"
-                href="javascript:void(0)"
-                class="nav-link"
-              >
-                {{ "LOGOUT" | translate }}
+              <a routerLink="/new-offer" class="nav-link">
+                <span class="fa-solid fa-plus"></span>
+                {{ "CREATE_OFFER" | translate }}
               </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                href="javascript:void(0)"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                <span class="fa-regular fa-circle-user"></span>
+                {{ "MY_ACCOUNT" | translate }}
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink="/my-offers" class="dropdown-item">
+                    {{ "MY_OFFERS" | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="" class="dropdown-item">
+                    {{ "SETTINGS" | translate }}
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    (click)="onLogoutClick()"
+                    href="javascript:void(0)"
+                    class="dropdown-item"
+                  >
+                    {{ "LOGOUT" | translate }}
+                  </a>
+                </li>
+              </ul>
             </li>
           }
         </ul>

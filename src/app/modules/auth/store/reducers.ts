@@ -66,6 +66,7 @@ export const loginReducer = createReducer(
   })),
   on(AuthActions.loginSuccess, (state) => ({
     ...state,
+    status: Status.SUCCESS,
     errors: null,
   })),
   on(AuthActions.loginFailed, (state, { errors }) => ({

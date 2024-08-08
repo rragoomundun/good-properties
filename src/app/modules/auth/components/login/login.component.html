@@ -51,7 +51,7 @@
               }
 
               <div class="text-center">
-                @if (["PENDING", "ERROR"].includes(status)) {
+                @if (["PENDING", "ERROR", "SUCCESS"].includes(status)) {
                   <button
                     [disabled]="loginForm.valid === false"
                     (click)="onLoginClick()"
