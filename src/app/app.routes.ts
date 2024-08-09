@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
+
 import { loggedInGuard } from './core/guards/logged-in/logged-in.guard';
 import { loggedOutGuard } from './core/guards/logged-out/logged-out.guard';
 
@@ -43,5 +45,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
     canActivate: [loggedOutGuard],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];

@@ -31,6 +31,10 @@
     }
   },
   "PAGES": {
+    "NOT_FOUND": {
+      "TITLE": "Page Not Found",
+      "MESSAGE": "The page that you are trying to access does not exists."
+    },
     "REGISTER": {
       "REGISTER_ON": "Register on Good Properties",
       "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",
