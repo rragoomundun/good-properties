@@ -4,12 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { OfferComponent } from './components/offer/offer.component';
 import { OfferEditComponent } from './components/offer-edit/offer-edit.component';
 
+import { loggedInGuard } from '../../core/guards/logged-in/logged-in.guard';
+
 const routes: Routes = [
   {
     path: ':offerId',
     children: [
       { path: '', component: OfferComponent },
-      { path: 'edit', component: OfferEditComponent },
+      {
+        path: 'edit',
+        component: OfferEditComponent,
+        canActivate: [loggedInGuard],
+      },
     ],
   },
   {

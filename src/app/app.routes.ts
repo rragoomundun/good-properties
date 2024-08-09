@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 
+import { loggedInGuard } from './core/guards/logged-in/logged-in.guard';
+import { loggedOutGuard } from './core/guards/logged-out/logged-out.guard';
+
 export const routes: Routes = [
   {
     path: '',
@@ -17,6 +20,7 @@ export const routes: Routes = [
       import('./modules/new-offer/new-offer.module').then(
         (m) => m.NewOfferModule,
       ),
+    canActivate: [loggedInGuard],
   },
   {
     path: 'my-offers',
@@ -24,6 +28,7 @@ export const routes: Routes = [
       import('./modules/my-offers/my-offers.module').then(
         (m) => m.MyOffersModule,
       ),
+    canActivate: [loggedInGuard],
   },
   {
     path: 'settings',
@@ -31,10 +36,12 @@ export const routes: Routes = [
       import('./modules/settings/settings.module').then(
         (m) => m.SettingsModule,
       ),
+    canActivate: [loggedInGuard],
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [loggedOutGuard],
   },
 ];

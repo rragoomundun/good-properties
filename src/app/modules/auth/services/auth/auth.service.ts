@@ -72,4 +72,10 @@ export class AuthService {
       { withCredentials: true },
     );
   }
+
+  authorized(): Observable<Object> {
+    return this.http.get(`${this.API_PREFIX}/authorized`, {
+      withCredentials: true,
+    });
+  }
 }
