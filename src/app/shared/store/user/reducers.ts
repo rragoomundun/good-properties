@@ -26,6 +26,13 @@ export const userReducer = createReducer(
     ...state,
     status: Status.ERROR,
   })),
+  on(UserActions.updateCurrentUserEmail, (state, { email }) => ({
+    ...state,
+    user: {
+      id: <number>state.user?.id,
+      email,
+    },
+  })),
   on(UserActions.clearCurrentUser, (state) => ({
     ...state,
     user: null,

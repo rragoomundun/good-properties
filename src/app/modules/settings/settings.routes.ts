@@ -14,14 +14,17 @@ const routes: Routes = [
       {
         path: 'account',
         component: SettingsAccountComponent,
+        data: { title: 'PAGES.SETTINGS.TABS.ACCOUNT.TITLE' },
       },
       {
         path: 'contact',
         component: SettingsContactComponent,
+        data: { title: 'PAGES.SETTINGS.TABS.CONTACT.TITLE' },
       },
       {
         path: 'delete',
         component: SettingsDeleteComponent,
+        data: { title: 'PAGES.SETTINGS.TABS.DELETE_ACCOUNT.TITLE' },
       },
       {
         path: '**',

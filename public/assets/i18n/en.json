@@ -76,6 +76,32 @@
       "ERRORS": {
         "INVALID_TOKEN": "Impossible to set a new password."
       }
+    },
+    "NEW_OFFER": {
+      "TITLE": "New Offer"
+    },
+    "MY_OFFERS": {
+      "TITLE": "My Offers"
+    },
+    "SETTINGS": {
+      "TABS": {
+        "ACCOUNT": {
+          "TITLE": "Account Settings",
+          "NAME": "Account",
+          "SUCCESS": {
+            "EMAIL": "The e-mail address has been updated.",
+            "PASSWORD": "The password has been updated."
+          }
+        },
+        "CONTACT": {
+          "TITLE": "Contact Settings",
+          "NAME": "Contact"
+        },
+        "DELETE_ACCOUNT": {
+          "TITLE": "Delete Account",
+          "NAME": "Delete Account"
+        }
+      }
     }
   }
 }
