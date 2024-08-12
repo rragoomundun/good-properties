@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import { SettingsAccountEmailState } from './settings-account-email.state';
 import { SettingsAccountPasswordState } from './settings-account-password.state';
+import { SettingsAccountContactState } from './settings-account-contact.state';
 
 import * as SettingsActions from './actions';
 
@@ -58,6 +59,34 @@ export const settingsAccountPasswordReducer = createReducer(
     errors: null,
   })),
   on(SettingsActions.updatePasswordFailed, (state, { errors }) => ({
+    ...state,
+    status: Status.ERROR,
+    errors,
+  })),
+);
+
+export const initialSettingsAccountContactState: SettingsAccountContactState = {
+  status: Status.PENDING,
+  errors: null,
+};
+
+export const settingsAccountContactReducer = createReducer(
+  initialSettingsAccountContactState,
+  on(SettingsActions.initContact, (state) => ({
+    ...state,
+    status: Status.PENDING,
+    errors: null,
+  })),
+  on(SettingsActions.updateContact, (state) => ({
+    ...state,
+    status: Status.IN_PROGRESS,
+  })),
+  on(SettingsActions.updateContactSuccess, (state) => ({
+    ...state,
+    status: Status.SUCCESS,
+    errors: null,
+  })),
+  on(SettingsActions.updateContactFailed, (state, { errors }) => ({
     ...state,
     status: Status.ERROR,
     errors,

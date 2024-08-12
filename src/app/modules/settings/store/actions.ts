@@ -27,3 +27,16 @@ export const updatePasswordFailed = createAction(
   '[Settings Account Page] Update Password Failed',
   props<{ errors: any }>(),
 );
+
+export const initContact = createAction('[Settings Account Page] Init Contact');
+export const updateContact = createAction(
+  '[Settings Account Page] Update Contact',
+  props<{ email: string; telephone: string; whatsapp: string }>(),
+);
+export const updateContactSuccess = createAction(
+  '[Settings Account Page] Update Contact Success',
+);
+export const updateContactFailed = createAction(
+  '[Settings Account Page] Update Contact Failed',
+  props<{ errors: any }>(),
+);

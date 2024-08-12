@@ -30,4 +30,16 @@ export class SettingsService {
       withCredentials: true,
     });
   }
+
+  updateContact(
+    email: string,
+    telephone: string,
+    whatsapp: string,
+  ): Observable<Object> {
+    const body = { email, telephone, whatsapp };
+
+    return this.http.put(`${this.API_PREFIX}/contact`, body, {
+      withCredentials: true,
+    });
+  }
 }

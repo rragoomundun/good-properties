@@ -4,6 +4,7 @@ import { map, concatMap, catchError, of } from 'rxjs';
 
 import * as SettingsActions from './actions';
 import * as UserActions from '../../../shared/store/user/actions';
+import * as ContactActions from '../../../shared/store/contact/actions';
 
 import { SettingsService } from '../services/settings/settings.service';
 
@@ -40,6 +41,29 @@ export class SettingsEffects {
             map(() => SettingsActions.updatePasswordSuccess()),
             catchError((error) =>
               of(SettingsActions.updatePasswordFailed({ errors: error.error })),
+            ),
+          ),
+      ),
+    ),
+  );
+
+  updateContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.updateContact),
+      concatMap((action) =>
+        this.settingsService
+          .updateContact(action.email, action.telephone, action.whatsapp)
+          .pipe(
+            concatMap(() => [
+              SettingsActions.updateContactSuccess(),
+              ContactActions.updateCurrentUserContact({
+                email: action.email,
+                telephone: action.telephone,
+                whatsapp: action.whatsapp,
+              }),
+            ]),
+            catchError((error) =>
+              of(SettingsActions.updateContactFailed({ errors: error.error })),
             ),
           ),
       ),

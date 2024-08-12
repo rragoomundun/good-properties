@@ -1,1 +1,53 @@
-<p>settings-contact works!</p>
+<form [formGroup]="contactForm">
+  <div class="mb-3">
+    <app-input
+      [id]="'email-input'"
+      [icon]="'fa-solid fa-envelope'"
+      [label]="'EMAIL'"
+      [type]="'email'"
+      [formControlName]="'email'"
+      [error]="emailError"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'telephone-input'"
+      [icon]="'fa-solid fa-phone'"
+      [label]="'TELEPHONE'"
+      [type]="'text'"
+      [formControlName]="'telephone'"
+      [error]="telephoneError"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'whatsapp-input'"
+      [icon]="'fa-brands fa-whatsapp'"
+      [label]="'WHATSAPP'"
+      [type]="'text'"
+      [formControlName]="'whatsapp'"
+      [error]="whatsappError"
+    ></app-input>
+  </div>
+
+  <div class="text-end">
+    @if (status === "SUCCESS") {
+      <p class="text-success">
+        {{ "PAGES.SETTINGS.TABS.CONTACT.SUCCESS" | translate }}
+      </p>
+    }
+
+    @if (["PENDING", "ERROR", "SUCCESS"].includes(status)) {
+      <button (click)="onModifyClick()" class="btn btn-primary">
+        {{ "MODIFY" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        {{ "MODIFYING" | translate }}
+      </button>
+    }
+  </div>
+</form>

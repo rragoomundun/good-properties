@@ -11,6 +11,8 @@
   "TOS": "Terms of Use",
   "PRIVACY_POLICY": "Privacy Policy",
   "EMAIL": "E-Mail Address",
+  "TELEPHONE": "Telephone",
+  "WHATSAPP": "WhatsApp",
   "PASSWORD": "Password",
   "REPEAT_PASSWORD": "Repeat Password",
   "SUBMIT": "Submit",
@@ -22,6 +24,10 @@
       "INVALID_EMAIL": "Please add a valid e-mail.",
       "EMAIL_IN_USE": "The email address is already in use.",
       "EMAIL_NOT_FOUND": "No account is associated to this e-mail address."
+    },
+    "TELEPHONE": {
+      "NUMBER_ONLY": "Only digits are allowed.",
+      "NUMBER_LENGTH": "Must have 7 or 8 digits."
     },
     "PASSWORD": {
       "PASSWORD_MIN_LENGTH": "The password has to have at least 12 characters."
@@ -95,7 +101,8 @@
         },
         "CONTACT": {
           "TITLE": "Contact Settings",
-          "NAME": "Contact"
+          "NAME": "Contact",
+          "SUCCESS": "The contact information has been updated."
         },
         "DELETE_ACCOUNT": {
           "TITLE": "Delete Account",

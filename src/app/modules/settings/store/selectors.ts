@@ -2,6 +2,7 @@ import { createSelector } from '@ngrx/store';
 
 import { SettingsAccountEmailState } from './settings-account-email.state';
 import { SettingsAccountPasswordState } from './settings-account-password.state';
+import { SettingsAccountContactState } from './settings-account-contact.state';
 
 import { AppState } from '../../../store/app.store';
 
@@ -29,4 +30,17 @@ export const selectSettingsAccountPasswordStatus = createSelector(
 export const selectSettingsAccountPasswordErrors = createSelector(
   settingsAccountPasswordState,
   (state: SettingsAccountPasswordState) => state.errors,
+);
+
+const settingsAccountContactState = (state: AppState) =>
+  state.settingsAccountContact;
+
+export const selectSettingsAccountContactStatus = createSelector(
+  settingsAccountContactState,
+  (state: SettingsAccountContactState) => state.status,
+);
+
+export const selectSettingsAccountContactErrors = createSelector(
+  settingsAccountContactState,
+  (state: SettingsAccountContactState) => state.errors,
 );
