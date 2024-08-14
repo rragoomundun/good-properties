@@ -15,7 +15,7 @@ export const registerConfirm = createAction(
   props<{ confirmationToken: string }>(),
 );
 export const registerConfirmSuccess = createAction(
-  '[Register Confirm Page] Register Confirm Success',
+  '[Register ConfirFm Page] Register Confirm Success',
 );
 export const registerConfirmFailed = createAction(
   '[Register Confirm Page] Register Confirm Failed',
@@ -31,7 +31,7 @@ export const loginFailed = createAction(
   props<{ errors: any }>(),
 );
 
-export const logout = createAction('[Header Component] Logout');
+export const logout = createAction('[Auth] Logout', props<{ delay: number }>());
 
 export const passwordForgotten = createAction(
   '[Password Forgotten Page] Password Forgotten',

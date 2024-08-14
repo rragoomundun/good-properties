@@ -3,6 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import { SettingsAccountEmailState } from './settings-account-email.state';
 import { SettingsAccountPasswordState } from './settings-account-password.state';
 import { SettingsAccountContactState } from './settings-account-contact.state';
+import { SettingsAccountDeleteState } from './settings-account-delete.state';
 
 import * as SettingsActions from './actions';
 
@@ -90,5 +91,29 @@ export const settingsAccountContactReducer = createReducer(
     ...state,
     status: Status.ERROR,
     errors,
+  })),
+);
+
+export const initialSettingsAccountDeleteState: SettingsAccountDeleteState = {
+  status: Status.PENDING,
+};
+
+export const settingsAccountDeleteReducer = createReducer(
+  initialSettingsAccountDeleteState,
+  on(SettingsActions.initDelete, (state) => ({
+    ...state,
+    status: Status.PENDING,
+  })),
+  on(SettingsActions.deleteAccount, (state) => ({
+    ...state,
+    status: Status.IN_PROGRESS,
+  })),
+  on(SettingsActions.deleteAccountSuccess, (state) => ({
+    ...state,
+    status: Status.SUCCESS,
+  })),
+  on(SettingsActions.deleteAccountFailed, (state) => ({
+    ...state,
+    status: Status.ERROR,
   })),
 );

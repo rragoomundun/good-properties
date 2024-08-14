@@ -42,4 +42,10 @@ export class SettingsService {
       withCredentials: true,
     });
   }
+
+  deleteAccount(): Observable<Object> {
+    return this.http.delete(`${this.API_PREFIX}/delete`, {
+      withCredentials: true,
+    });
+  }
 }

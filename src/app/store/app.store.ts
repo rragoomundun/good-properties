@@ -16,6 +16,7 @@ import { userReducer } from '../shared/store/user/reducers';
 import { contactReducer } from '../shared/store/contact/reducers';
 import {
   settingsAccountContactReducer,
+  settingsAccountDeleteReducer,
   settingsAccountEmailReducer,
   settingsAccountPasswordReducer,
 } from '../modules/settings/store/reducers';
@@ -30,6 +31,7 @@ import { ContactState } from '../shared/store/contact/contact.state';
 import { SettingsAccountEmailState } from '../modules/settings/store/settings-account-email.state';
 import { SettingsAccountPasswordState } from '../modules/settings/store/settings-account-password.state';
 import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
+import { SettingsAccountDeleteState } from '../modules/settings/store/settings-account-delete.state';
 
 export interface AppState {
   register: RegisterState;
@@ -42,6 +44,7 @@ export interface AppState {
   settingsAccountEmail: SettingsAccountEmailState;
   settingsAccountPassword: SettingsAccountPasswordState;
   settingsAccountContact: SettingsAccountContactState;
+  settingsAccountDelete: SettingsAccountDeleteState;
 }
 
 export interface AppStore {
@@ -55,6 +58,7 @@ export interface AppStore {
   settingsAccountEmail: ActionReducer<SettingsAccountEmailState, Action>;
   settingsAccountPassword: ActionReducer<SettingsAccountPasswordState, Action>;
   settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
+  settingsAccountDelete: ActionReducer<SettingsAccountDeleteState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -68,6 +72,7 @@ export const appStore: AppStore = {
   settingsAccountEmail: settingsAccountEmailReducer,
   settingsAccountPassword: settingsAccountPasswordReducer,
   settingsAccountContact: settingsAccountContactReducer,
+  settingsAccountDelete: settingsAccountDeleteReducer,
 };
 
 export const appEffects = [
