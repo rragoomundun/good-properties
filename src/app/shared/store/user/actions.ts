@@ -11,4 +11,9 @@ export const getCurrentUserFailed = createAction(
   '[User] Get Current User Failed',
 );
 
+export const updateCurrentUserEmail = createAction(
+  '[User] Update Current User Email',
+  props<{ email: string }>(),
+);
+
 export const clearCurrentUser = createAction('[User] Clear Current User');

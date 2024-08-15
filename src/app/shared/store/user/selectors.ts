@@ -15,3 +15,8 @@ export const selectUserStatus = createSelector(
   userState,
   (state: UserState) => state.status,
 );
+
+export const selectUserEmail = createSelector(
+  userState,
+  (state: UserState) => state.user?.email,
+);

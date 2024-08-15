@@ -3,10 +3,16 @@
   "LOGIN": "Login",
   "REGISTER": "Register",
   "REGISTERING": "Registering",
+  "CREATE_OFFER": "Create Offer",
+  "MY_ACCOUNT": "My Account",
+  "MY_OFFERS": "My Offers",
+  "SETTINGS": "Settings",
   "LOGOUT": "Logout",
   "TOS": "Terms of Use",
   "PRIVACY_POLICY": "Privacy Policy",
   "EMAIL": "E-Mail Address",
+  "TELEPHONE": "Telephone",
+  "WHATSAPP": "WhatsApp",
   "PASSWORD": "Password",
   "REPEAT_PASSWORD": "Repeat Password",
   "SUBMIT": "Submit",
@@ -19,6 +25,10 @@
       "EMAIL_IN_USE": "The email address is already in use.",
       "EMAIL_NOT_FOUND": "No account is associated to this e-mail address."
     },
+    "TELEPHONE": {
+      "NUMBER_ONLY": "Only digits are allowed.",
+      "NUMBER_LENGTH": "Must have 7 or 8 digits."
+    },
     "PASSWORD": {
       "PASSWORD_MIN_LENGTH": "The password has to have at least 12 characters."
     },
@@ -27,6 +37,10 @@
     }
   },
   "PAGES": {
+    "NOT_FOUND": {
+      "TITLE": "Page Not Found",
+      "MESSAGE": "The page that you are trying to access does not exists."
+    },
     "REGISTER": {
       "REGISTER_ON": "Register on Good Properties",
       "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",
@@ -67,6 +81,33 @@
       "SUCCESS": "Your password has been changed. You are going to be redirected...",
       "ERRORS": {
         "INVALID_TOKEN": "Impossible to set a new password."
+      }
+    },
+    "NEW_OFFER": {
+      "TITLE": "New Offer"
+    },
+    "MY_OFFERS": {
+      "TITLE": "My Offers"
+    },
+    "SETTINGS": {
+      "TABS": {
+        "ACCOUNT": {
+          "TITLE": "Account Settings",
+          "NAME": "Account",
+          "SUCCESS": {
+            "EMAIL": "The e-mail address has been updated.",
+            "PASSWORD": "The password has been updated."
+          }
+        },
+        "CONTACT": {
+          "TITLE": "Contact Settings",
+          "NAME": "Contact",
+          "SUCCESS": "The contact information has been updated."
+        },
+        "DELETE_ACCOUNT": {
+          "TITLE": "Delete Account",
+          "NAME": "Delete Account"
+        }
       }
     }
   }

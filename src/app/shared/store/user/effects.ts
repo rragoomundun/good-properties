@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of } from 'rxjs';
+import { catchError, exhaustMap, concatMap, of } from 'rxjs';
 
 import { UserService } from '../../services/user/user.service';
 
 import * as UserActions from './actions';
+import * as ContactActions from '../contact/actions';
 
 @Injectable()
 export class UserEffects {
@@ -17,7 +18,10 @@ export class UserEffects {
       ofType(UserActions.getCurrentUser),
       exhaustMap(() =>
         this.userService.getCurrentUser().pipe(
-          map((user) => UserActions.getCurrentUserSuccess({ user })),
+          concatMap((user) => [
+            UserActions.getCurrentUserSuccess({ user }),
+            ContactActions.getCurrentUserContact(),
+          ]),
           catchError(() => of(UserActions.getCurrentUserFailed())),
         ),
       ),

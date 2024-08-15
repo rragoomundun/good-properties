@@ -40,7 +40,9 @@ export class AuthService {
       password,
     };
 
-    return this.http.post(`${this.API_PREFIX}/login`, params);
+    return this.http.post(`${this.API_PREFIX}/login`, params, {
+      withCredentials: true,
+    });
   }
 
   logout(): Observable<Object> {
@@ -69,5 +71,11 @@ export class AuthService {
       params,
       { withCredentials: true },
     );
+  }
+
+  authorized(): Observable<Object> {
+    return this.http.get(`${this.API_PREFIX}/authorized`, {
+      withCredentials: true,
+    });
   }
 }

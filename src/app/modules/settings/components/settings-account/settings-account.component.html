@@ -1,0 +1,84 @@
+<form [formGroup]="emailForm">
+  <div class="mb-3">
+    <app-input
+      [id]="'email-input'"
+      [icon]="'fa-solid fa-envelope'"
+      [label]="'EMAIL'"
+      [type]="'email'"
+      [formControlName]="'email'"
+      [error]="emailError"
+    ></app-input>
+  </div>
+
+  <div class="text-end">
+    @if (emailStatus === "SUCCESS") {
+      <p class="text-success">
+        {{ "PAGES.SETTINGS.TABS.ACCOUNT.SUCCESS.EMAIL" | translate }}
+      </p>
+    }
+
+    @if (["PENDING", "ERROR", "SUCCESS"].includes(emailStatus)) {
+      <button
+        [disabled]="emailForm.valid === false"
+        (click)="onModifyEmailClick()"
+        class="btn btn-primary"
+      >
+        {{ "MODIFY" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        {{ "MODIFYING" | translate }}
+      </button>
+    }
+  </div>
+</form>
+
+<hr />
+
+<form [formGroup]="passwordForm">
+  <div class="mb-3">
+    <app-input
+      [id]="'password-input'"
+      [icon]="'fa-solid fa-lock'"
+      [label]="'PASSWORD'"
+      [type]="'password'"
+      [formControlName]="'password'"
+      [error]="passwordError"
+    ></app-input>
+  </div>
+
+  <div class="mb-3">
+    <app-input
+      [id]="'repeated-password-input'"
+      [icon]="'fa-solid fa-lock'"
+      [label]="'REPEAT_PASSWORD'"
+      [type]="'password'"
+      [formControlName]="'repeatedPassword'"
+      [error]="repeatedPasswordError"
+    ></app-input>
+  </div>
+
+  <div class="text-end">
+    @if (passwordStatus === "SUCCESS") {
+      <p class="text-success">
+        {{ "PAGES.SETTINGS.TABS.ACCOUNT.SUCCESS.PASSWORD" | translate }}
+      </p>
+    }
+
+    @if (["PENDING", "ERROR", "SUCCESS"].includes(passwordStatus)) {
+      <button
+        [disabled]="passwordForm.valid === false"
+        (click)="onModifyPasswordClick()"
+        class="btn btn-primary"
+      >
+        {{ "MODIFY" | translate }}
+      </button>
+    } @else {
+      <button [disabled]="true" class="btn btn-primary">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+        {{ "MODIFYING" | translate }}
+      </button>
+    }
+  </div>
+</form>

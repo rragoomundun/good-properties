@@ -2,6 +2,8 @@ import { Action, ActionReducer } from '@ngrx/store';
 
 import { AuthEffects } from '../modules/auth/store/effects';
 import { UserEffects } from '../shared/store/user/effects';
+import { ContactEffects } from '../shared/store/contact/effects';
+import { SettingsEffects } from '../modules/settings/store/effects';
 
 import {
   registerReducer,
@@ -11,6 +13,12 @@ import {
   resetPasswordReducer,
 } from '../modules/auth/store/reducers';
 import { userReducer } from '../shared/store/user/reducers';
+import { contactReducer } from '../shared/store/contact/reducers';
+import {
+  settingsAccountContactReducer,
+  settingsAccountEmailReducer,
+  settingsAccountPasswordReducer,
+} from '../modules/settings/store/reducers';
 
 import { RegisterState } from '../modules/auth/store/register.state';
 import { RegisterConfirmState } from '../modules/auth/store/register-confirm.state';
@@ -18,6 +26,10 @@ import { LoginState } from '../modules/auth/store/login.state';
 import { PasswordForgottenState } from '../modules/auth/store/password-forgotten.state';
 import { ResetPasswordState } from '../modules/auth/store/reset-password.state';
 import { UserState } from '../shared/store/user/user.state';
+import { ContactState } from '../shared/store/contact/contact.state';
+import { SettingsAccountEmailState } from '../modules/settings/store/settings-account-email.state';
+import { SettingsAccountPasswordState } from '../modules/settings/store/settings-account-password.state';
+import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
 
 export interface AppState {
   register: RegisterState;
@@ -26,6 +38,10 @@ export interface AppState {
   passwordForgotten: PasswordForgottenState;
   resetPassword: ResetPasswordState;
   user: UserState;
+  contact: ContactState;
+  settingsAccountEmail: SettingsAccountEmailState;
+  settingsAccountPassword: SettingsAccountPasswordState;
+  settingsAccountContact: SettingsAccountContactState;
 }
 
 export interface AppStore {
@@ -35,6 +51,10 @@ export interface AppStore {
   passwordForgotten: ActionReducer<PasswordForgottenState, Action>;
   resetPassword: ActionReducer<ResetPasswordState, Action>;
   user: ActionReducer<UserState, Action>;
+  contact: ActionReducer<ContactState, Action>;
+  settingsAccountEmail: ActionReducer<SettingsAccountEmailState, Action>;
+  settingsAccountPassword: ActionReducer<SettingsAccountPasswordState, Action>;
+  settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -44,6 +64,15 @@ export const appStore: AppStore = {
   passwordForgotten: passwordForgottenReducer,
   resetPassword: resetPasswordReducer,
   user: userReducer,
+  contact: contactReducer,
+  settingsAccountEmail: settingsAccountEmailReducer,
+  settingsAccountPassword: settingsAccountPasswordReducer,
+  settingsAccountContact: settingsAccountContactReducer,
 };
 
-export const appEffects = [AuthEffects, UserEffects];
+export const appEffects = [
+  AuthEffects,
+  UserEffects,
+  ContactEffects,
+  SettingsEffects,
+];

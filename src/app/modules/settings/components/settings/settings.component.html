@@ -1,0 +1,44 @@
+<div id="main-container" class="main-container-top-margin">
+  <h1>{{ "SETTINGS" | translate }}</h1>
+  <hr />
+
+  <div class="row">
+    <div class="col-12 col-sm-4">
+      <div class="container">
+        <div class="nav flex-column nav-pills">
+          <a
+            [class.active]="tab === 'account'"
+            routerLink="/settings/account"
+            class="nav-link"
+          >
+            <span class="fa-solid fa-user-circle"></span>&nbsp;
+            {{ "PAGES.SETTINGS.TABS.ACCOUNT.NAME" | translate }}
+          </a>
+          <a
+            [class.active]="tab === 'contact'"
+            routerLink="/settings/contact"
+            class="nav-link"
+          >
+            <span class="fa-regular fa-address-book"></span>&nbsp;
+            {{ "PAGES.SETTINGS.TABS.CONTACT.NAME" | translate }}
+          </a>
+          <a
+            [class.active]="tab === 'delete'"
+            routerLink="/settings/delete"
+            class="nav-link"
+          >
+            <span class="fa-solid fa-trash"></span>&nbsp;
+            {{ "PAGES.SETTINGS.TABS.DELETE_ACCOUNT.NAME" | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-8">
+      <hr class="d-block d-sm-none" />
+
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

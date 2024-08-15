@@ -83,7 +83,18 @@ export class AuthEffects {
       exhaustMap(() =>
         this.authService.logout().pipe(
           map(() => UserActions.clearCurrentUser()),
-          tap(() => this.cookieService.delete('token', '/')),
+          tap(() => {
+            if (
+              this.router.url === '/new-offer' ||
+              this.router.url === '/my-offers' ||
+              this.router.url.startsWith('/settings') ||
+              /\/offer\/.*\/edit/g.test(this.router.url)
+            ) {
+              this.router.navigate(['/']);
+            }
+
+            this.cookieService.delete('token', '/');
+          }),
         ),
       ),
     ),
