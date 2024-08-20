@@ -1,0 +1,35 @@
+<div id="dropzone-wrapper">
+  <div id="dropzone">
+    <div>
+      <span class="fa-solid fa-upload"></span>
+    </div>
+    <div>
+      <span class="fw-bold">
+        {{ "COMPONENTS.IMAGE_UPLOADER.UPLOAD_PHOTOS" | translate }}
+      </span>
+    </div>
+    <div>
+      <span>{{ "COMPONENTS.IMAGE_UPLOADER.UPLOAD_ONE" | translate }}</span>
+    </div>
+  </div>
+
+  <input
+    #imageInput
+    (change)="onImageChange($event)"
+    type="file"
+    name="image"
+    multiple
+  />
+</div>
+
+<div id="images">
+  @for (image of images; track image) {
+    <div>
+      <img [src]="image" />
+      <!-- <div class="uploading-indicator">
+        <span class="fa-solid fa-spinner fa-spin"></span>
+      </div> -->
+      <!-- <span class="fa-regular fa-circle-xmark"></span> -->
+    </div>
+  }
+</div>

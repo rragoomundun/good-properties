@@ -19,6 +19,10 @@
   "SUBMITTING": "Submitting...",
   "MODIFY": "Modify",
   "MODIFYING": "Modifying...",
+  "PHOTOS": "Photos",
+  "GENERAL_INFORMATIONS": "General Informations",
+  "DESCRIPTION": "Description",
+  "FEATURES": "Features",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -109,6 +113,12 @@
           "NAME": "Delete Account"
         }
       }
+    }
+  },
+  "COMPONENTS": {
+    "IMAGE_UPLOADER": {
+      "UPLOAD_PHOTOS": "Upload Photos",
+      "UPLOAD_ONE": "Upload at least one photo"
     }
   }
 }
