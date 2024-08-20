@@ -21,6 +21,10 @@
   "MODIFYING": "Modifying...",
   "DELETE": "Delete",
   "DELETING": "Deleting...",
+  "PHOTOS": "Photos",
+  "GENERAL_INFORMATIONS": "General Informations",
+  "DESCRIPTION": "Description",
+  "FEATURES": "Features",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -113,6 +117,12 @@
           "ACCOUNT_DELETED": "Your account has been deleted. You are going to be redirected..."
         }
       }
+    }
+  },
+  "COMPONENTS": {
+    "IMAGE_UPLOADER": {
+      "UPLOAD_PHOTOS": "Upload Photos",
+      "UPLOAD_ONE": "Upload at least one photo"
     }
   }
 }
