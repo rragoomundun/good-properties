@@ -25,11 +25,30 @@
 <div id="images">
   @for (image of images; track image) {
     <div>
-      <img [src]="image" />
-      <!-- <div class="uploading-indicator">
-        <span class="fa-solid fa-spinner fa-spin"></span>
-      </div> -->
-      <!-- <span class="fa-regular fa-circle-xmark"></span> -->
+      <img [src]="image.image" />
+
+      @if (image.status === "IN_PROGRESS") {
+        <div class="uploading-indicator">
+          <span class="fa-solid fa-spinner fa-spin"></span>
+        </div>
+      } @else {
+        <span
+          (click)="onXMarkClick($index)"
+          class="fa-regular fa-circle-xmark"
+        ></span>
+      }
+
+      @if (image.status === "ERROR") {
+        <span
+          class="fa-solid fa-circle-exclamation text-danger"
+          placement="top"
+          ngbTooltip="{{
+            errors[$index]
+              ? (errors[$index] | translate)
+              : ('COMPONENTS.IMAGE_UPLOADER.ERRORS.UPLOAD_FAILED' | translate)
+          }}"
+        ></span>
+      }
     </div>
   }
 </div>

@@ -118,7 +118,12 @@
   "COMPONENTS": {
     "IMAGE_UPLOADER": {
       "UPLOAD_PHOTOS": "Upload Photos",
-      "UPLOAD_ONE": "Upload at least one photo"
+      "UPLOAD_ONE": "Upload at least one photo",
+      "ERRORS": {
+        "SIZE": "The image exceeds the limit of 5 MB",
+        "MIMETYPE": "The image type must be a .jpeg, .png, .gif, or .webp",
+        "UPLOAD_FAILED": "Cannot upload file"
+      }
     }
   }
 }

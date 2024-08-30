@@ -4,6 +4,7 @@ import { AuthEffects } from '../modules/auth/store/effects';
 import { UserEffects } from '../shared/store/user/effects';
 import { ContactEffects } from '../shared/store/contact/effects';
 import { SettingsEffects } from '../modules/settings/store/effects';
+import { ImageUploadEffects } from '../shared/store/image-upload/effects';
 
 import {
   registerReducer,
@@ -19,6 +20,7 @@ import {
   settingsAccountEmailReducer,
   settingsAccountPasswordReducer,
 } from '../modules/settings/store/reducers';
+import { imageUploadReducer } from '../shared/store/image-upload/reducers';
 
 import { RegisterState } from '../modules/auth/store/register.state';
 import { RegisterConfirmState } from '../modules/auth/store/register-confirm.state';
@@ -30,6 +32,7 @@ import { ContactState } from '../shared/store/contact/contact.state';
 import { SettingsAccountEmailState } from '../modules/settings/store/settings-account-email.state';
 import { SettingsAccountPasswordState } from '../modules/settings/store/settings-account-password.state';
 import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
+import { ImageUploadState } from '../shared/store/image-upload/image-upload.state';
 
 export interface AppState {
   register: RegisterState;
@@ -42,6 +45,7 @@ export interface AppState {
   settingsAccountEmail: SettingsAccountEmailState;
   settingsAccountPassword: SettingsAccountPasswordState;
   settingsAccountContact: SettingsAccountContactState;
+  imageUpload: ImageUploadState;
 }
 
 export interface AppStore {
@@ -55,6 +59,7 @@ export interface AppStore {
   settingsAccountEmail: ActionReducer<SettingsAccountEmailState, Action>;
   settingsAccountPassword: ActionReducer<SettingsAccountPasswordState, Action>;
   settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
+  imageUpload: ActionReducer<ImageUploadState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -68,6 +73,7 @@ export const appStore: AppStore = {
   settingsAccountEmail: settingsAccountEmailReducer,
   settingsAccountPassword: settingsAccountPasswordReducer,
   settingsAccountContact: settingsAccountContactReducer,
+  imageUpload: imageUploadReducer,
 };
 
 export const appEffects = [
@@ -75,4 +81,5 @@ export const appEffects = [
   UserEffects,
   ContactEffects,
   SettingsEffects,
+  ImageUploadEffects,
 ];
