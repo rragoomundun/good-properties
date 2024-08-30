@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FileUploaded } from '../../models/FileUploaded.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +9,18 @@ import { Observable } from 'rxjs';
 export class FileService {
   readonly API_PREFIX: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.API_PREFIX = 'file';
+  }
 
-  uploadFile(file: File): Observable<Object> {
+  uploadFile(file: File): Observable<FileUploaded> {
     const formData = new FormData();
 
     formData.append('file', file);
 
-    return this.http.post(this.API_PREFIX, formData, { withCredentials: true });
+    return this.http.post<FileUploaded>(this.API_PREFIX, formData, {
+      withCredentials: true,
+    });
   }
 
   deleteFile(fileName: string): Observable<Object> {
