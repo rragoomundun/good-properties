@@ -1,0 +1,13 @@
+<label [for]="id()" class="form-label">
+  @if (icon()) {
+    <span [class]="icon()"></span>&nbsp;
+  }
+
+  <span>{{ label() | translate }}</span>
+</label>
+
+<select [id]="id()" [formControlName]="formControlName()" class="form-select">
+  @for (option of options(); track option) {
+    <option [value]="option.value">{{ option.text | translate }}</option>
+  }
+</select>
