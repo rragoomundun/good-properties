@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -23,7 +23,7 @@ import * as ImageUploadActions from '../../store/image-upload/actions';
   templateUrl: './image-uploader.component.html',
   styleUrl: './image-uploader.component.scss',
 })
-export class ImageUploaderComponent {
+export class ImageUploaderComponent implements OnInit {
   images$: Observable<ImageUpload[]>;
 
   images: ImageUpload[];
@@ -48,6 +48,10 @@ export class ImageUploaderComponent {
     }
 
     return errors;
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(ImageUploadActions.initUploadImage());
   }
 
   onImageChange(event: Event): void {

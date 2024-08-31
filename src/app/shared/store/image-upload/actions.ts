@@ -2,6 +2,10 @@ import { createAction, props } from '@ngrx/store';
 
 import { ImageUpload } from '../../models/ImageUpload.model';
 
+export const initUploadImage = createAction(
+  '[Image Uploader Component] Init Upload Image',
+);
+
 export const uploadImage = createAction(
   '[Image Uploader Component] Upload Image',
   props<{ file: File; image: ImageUpload; index: number }>(),

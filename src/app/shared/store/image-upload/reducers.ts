@@ -12,6 +12,10 @@ export const inititalImageUploadState: ImageUploadState = {
 
 export const imageUploadReducer = createReducer(
   inititalImageUploadState,
+  on(ImageUploadActions.initUploadImage, (state) => ({
+    ...state,
+    images: [],
+  })),
   on(ImageUploadActions.uploadImage, (state, { image }) => {
     return {
       ...state,

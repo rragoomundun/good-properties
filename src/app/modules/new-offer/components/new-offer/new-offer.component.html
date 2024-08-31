@@ -1,4 +1,8 @@
-<div id="main-container" class="main-container-top-margin">
+<form
+  [formGroup]="newOfferForm"
+  id="main-container"
+  class="main-container-top-margin"
+>
   <h1>{{ "PAGES.NEW_OFFER.TITLE" | translate }}</h1>
   <hr />
 
@@ -10,9 +14,105 @@
   <h2>{{ "GENERAL_INFORMATIONS" | translate }}</h2>
   <hr />
 
+  <div class="row">
+    <div class="col-12 col-sm-6 mb-3">
+      <app-select
+        [id]="'type-of-good-select'"
+        [label]="'TYPE_OF_GOOD'"
+        [options]="[
+          { value: 'house', text: 'HOUSE' },
+          { value: 'apartment', text: 'APARTMENT' },
+          { value: 'room', text: 'ROOM' },
+        ]"
+        [formControlName]="'typeOfGood'"
+      ></app-select>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <app-select
+        [id]="'type-of-transaction-select'"
+        [label]="'TRANSACTION_TYPE'"
+        [options]="[
+          { value: 'to-rent', text: 'TO_RENT' },
+          { value: 'to-sell', text: 'TO_SELL' },
+        ]"
+        [formControlName]="'transactionType'"
+      ></app-select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-4 mb-3">
+      <app-input
+        [id]="'square-meters-input'"
+        [label]="'SQUARE_METERS'"
+        [type]="'number'"
+        [formControlName]="'squareMeters'"
+        [error]="squareMetersError"
+      ></app-input>
+    </div>
+    <div class="col-6 col-sm-4 mb-3">
+      <app-input
+        [id]="'rooms-input'"
+        [label]="'ROOMS'"
+        [type]="'number'"
+        [formControlName]="'rooms'"
+        [error]="roomsError"
+      ></app-input>
+    </div>
+    <div class="col-6 col-sm-4 mb-3">
+      <app-input
+        [id]="'bedrooms-input'"
+        [label]="'BEDROOMS'"
+        [type]="'number'"
+        [formControlName]="'bedrooms'"
+        [error]="bedroomsError"
+      ></app-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mb-3">
+      <app-input
+        [id]="'price-input'"
+        [label]="'PRICE'"
+        [type]="'number'"
+        [formControlName]="'price'"
+        [error]="priceError"
+      ></app-input>
+    </div>
+    <div class="col-6 mb-3">
+      <app-input
+        [id]="'city-input'"
+        [label]="'CITY'"
+        [type]="'text'"
+        [formControlName]="'city'"
+        [error]="cityError"
+      ></app-input>
+    </div>
+  </div>
+
   <h2>{{ "DESCRIPTION" | translate }}</h2>
   <hr />
 
+  <div class="row mb-3">
+    <div class="col">
+      <app-textarea
+        [id]="'description-textarea'"
+        [formControlName]="'description'"
+      ></app-textarea>
+    </div>
+  </div>
+
   <h2>{{ "FEATURES" | translate }}</h2>
   <hr />
-</div>
+
+  <h3>{{ "GENERAL_FEATURES" | translate }}</h3>
+
+  <h3>{{ "INDOOR_FEATURES" | translate }}</h3>
+
+  <h3>{{ "OUTDOOR_FEATURES" | translate }}</h3>
+
+  <button (click)="onShowFormValueClick()" class="btn btn-primary">
+    Show Form Value
+  </button>
+</form>
