@@ -71,7 +71,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 mb-3">
+    <div class="col-12 col-sm-6 mb-3">
       <app-input
         [id]="'price-input'"
         [label]="'PRICE'"
@@ -80,14 +80,14 @@
         [error]="priceError"
       ></app-input>
     </div>
-    <div class="col-6 mb-3">
-      <app-input
+    <div class="col-12 col-sm-6 mb-3">
+      <app-autocomplete
         [id]="'city-input'"
         [label]="'CITY'"
-        [type]="'text'"
+        [items]="cities"
         [formControlName]="'city'"
         [error]="cityError"
-      ></app-input>
+      ></app-autocomplete>
     </div>
   </div>
 
