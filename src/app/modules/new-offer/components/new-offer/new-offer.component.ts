@@ -11,7 +11,9 @@ import { ImageUploaderComponent } from '../../../../shared/components/image-uplo
 import { SelectComponent } from '../../../../shared/components/select/select.component';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { TextareaComponent } from '../../../../shared/components/textarea/textarea.component';
+import { AutocompleteComponent } from '../../../../shared/components/autocomplete/autocomplete.component';
 
+import { MauritiusUtil } from '../../../../shared/utils/mauritius.util';
 import { ErrorUtil } from '../../../../shared/utils/error.util';
 
 @Component({
@@ -24,12 +26,14 @@ import { ErrorUtil } from '../../../../shared/utils/error.util';
     SelectComponent,
     InputComponent,
     TextareaComponent,
+    AutocompleteComponent,
   ],
   templateUrl: './new-offer.component.html',
   styleUrl: './new-offer.component.scss',
 })
 export class NewOfferComponent {
   newOfferForm: FormGroup;
+  cities: string[];
 
   constructor() {
     this.newOfferForm = new FormGroup({
@@ -42,6 +46,8 @@ export class NewOfferComponent {
       city: new FormControl('', [Validators.required]),
       description: new FormControl(''),
     });
+
+    this.cities = MauritiusUtil.getCities();
   }
 
   get squareMetersError(): string {
