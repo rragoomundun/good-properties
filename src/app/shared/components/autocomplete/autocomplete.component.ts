@@ -13,6 +13,7 @@ import {
   ControlContainer,
   FormGroupDirective,
   ReactiveFormsModule,
+  AbstractControl,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -45,6 +46,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   label = input<string>();
   items = input<string[]>();
   formControlName = input<string>();
+  control = input<AbstractControl>();
   error = input<string>();
 
   availableItems: string[];
@@ -89,6 +91,14 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
     if (this.dropdownEl()) {
       this.dropdownEl().nativeElement.style.width = `${this.inputEl().nativeElement.clientWidth}px`;
     }
+  }
+
+  setValue(): void {
+    this.inputEl().nativeElement.value = this.availableItems[this.selected];
+    this.availableItems = [];
+    this.selected = 0;
+
+    this.control().setValue(this.inputEl().nativeElement.value);
   }
 
   @HostListener('window:resize')
@@ -183,18 +193,14 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
           }
           break;
         case 'Enter':
-          this.inputEl().nativeElement.value =
-            this.availableItems[this.selected];
-          this.availableItems = [];
-          this.selected = 0;
+          this.setValue();
+          break;
       }
     }
   }
 
   onItemClick(): void {
-    this.inputEl().nativeElement.value = this.availableItems[this.selected];
-    this.availableItems = [];
-    this.selected = 0;
+    this.setValue();
   }
 
   onItemMouseOver(index: number): void {

@@ -86,6 +86,7 @@
         [label]="'CITY'"
         [items]="cities"
         [formControlName]="'city'"
+        [control]="newOfferForm.get('city')"
         [error]="cityError"
       ></app-autocomplete>
     </div>
