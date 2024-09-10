@@ -19,6 +19,8 @@
   "SUBMITTING": "Submitting...",
   "MODIFY": "Modify",
   "MODIFYING": "Modifying...",
+  "CREATE": "Create",
+  "CREATION": "Creation...",
   "PHOTOS": "Photos",
   "GENERAL_INFORMATIONS": "General Informations",
   "DESCRIPTION": "Description",
@@ -103,7 +105,12 @@
       }
     },
     "NEW_OFFER": {
-      "TITLE": "New Offer"
+      "TITLE": "New Offer",
+      "ERRORS": {
+        "NO_CONTACT": "You must add contact informations in order to create an offer.",
+        "NO_CONTACT_ADD": "Add contact informations.",
+        "CREATION_FAILED": "Cannot create offer. Try again later."
+      }
     },
     "MY_OFFERS": {
       "TITLE": "My Offers"

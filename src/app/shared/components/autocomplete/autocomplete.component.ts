@@ -119,8 +119,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
       (this.dropdownEl() === undefined && outsideInputEl)
     ) {
       if (
-        this.availableItems.length &&
-        this.availableItems.find(
+        this.items().find(
           (item) => item === this.inputEl().nativeElement.value,
         ) === undefined
       ) {
