@@ -5,6 +5,7 @@ import { UserEffects } from '../shared/store/user/effects';
 import { ContactEffects } from '../shared/store/contact/effects';
 import { SettingsEffects } from '../modules/settings/store/effects';
 import { ImageUploadEffects } from '../shared/store/image-upload/effects';
+import { NewOfferEffects } from '../modules/new-offer/store/effects';
 
 import {
   registerReducer,
@@ -22,6 +23,7 @@ import {
   settingsAccountPasswordReducer,
 } from '../modules/settings/store/reducers';
 import { imageUploadReducer } from '../shared/store/image-upload/reducers';
+import { newOfferFeaturesReducer } from '../modules/new-offer/store/reducers';
 
 import { RegisterState } from '../modules/auth/store/register.state';
 import { RegisterConfirmState } from '../modules/auth/store/register-confirm.state';
@@ -35,6 +37,7 @@ import { SettingsAccountPasswordState } from '../modules/settings/store/settings
 import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
 import { SettingsAccountDeleteState } from '../modules/settings/store/settings-account-delete.state';
 import { ImageUploadState } from '../shared/store/image-upload/image-upload.state';
+import { NewOfferFeaturesState } from '../modules/new-offer/store/new-offer-features.state';
 
 export interface AppState {
   register: RegisterState;
@@ -49,6 +52,7 @@ export interface AppState {
   settingsAccountContact: SettingsAccountContactState;
   settingsAccountDelete: SettingsAccountDeleteState;
   imageUpload: ImageUploadState;
+  newOfferFeatures: NewOfferFeaturesState;
 }
 
 export interface AppStore {
@@ -64,6 +68,7 @@ export interface AppStore {
   settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
   settingsAccountDelete: ActionReducer<SettingsAccountDeleteState, Action>;
   imageUpload: ActionReducer<ImageUploadState, Action>;
+  newOfferFeatures: ActionReducer<NewOfferFeaturesState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -79,6 +84,7 @@ export const appStore: AppStore = {
   settingsAccountContact: settingsAccountContactReducer,
   settingsAccountDelete: settingsAccountDeleteReducer,
   imageUpload: imageUploadReducer,
+  newOfferFeatures: newOfferFeaturesReducer,
 };
 
 export const appEffects = [
@@ -87,4 +93,5 @@ export const appEffects = [
   ContactEffects,
   SettingsEffects,
   ImageUploadEffects,
+  NewOfferEffects,
 ];

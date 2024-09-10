@@ -50,6 +50,10 @@ export class ImageUploaderComponent implements OnInit {
     return errors;
   }
 
+  get areAllImagesUploaded(): boolean {
+    return this.images.every((image: ImageUpload) => image.fileLink !== null);
+  }
+
   ngOnInit(): void {
     this.store.dispatch(ImageUploadActions.initUploadImage());
   }

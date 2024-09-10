@@ -1,5 +1,6 @@
 <form
   [formGroup]="newOfferForm"
+  (keypress)="onFormKeyPress($event)"
   id="main-container"
   class="main-container-top-margin"
 >
@@ -9,7 +10,7 @@
   <h2>{{ "PHOTOS" | translate }}</h2>
   <hr />
 
-  <app-image-uploader></app-image-uploader>
+  <app-image-uploader #imageUploader></app-image-uploader>
 
   <h2>{{ "GENERAL_INFORMATIONS" | translate }}</h2>
   <hr />
@@ -47,7 +48,6 @@
         [label]="'SQUARE_METERS'"
         [type]="'number'"
         [formControlName]="'squareMeters'"
-        [error]="squareMetersError"
       ></app-input>
     </div>
     <div class="col-6 col-sm-4 mb-3">
@@ -56,7 +56,6 @@
         [label]="'ROOMS'"
         [type]="'number'"
         [formControlName]="'rooms'"
-        [error]="roomsError"
       ></app-input>
     </div>
     <div class="col-6 col-sm-4 mb-3">
@@ -65,7 +64,6 @@
         [label]="'BEDROOMS'"
         [type]="'number'"
         [formControlName]="'bedrooms'"
-        [error]="bedroomsError"
       ></app-input>
     </div>
   </div>
@@ -77,7 +75,6 @@
         [label]="'PRICE'"
         [type]="'number'"
         [formControlName]="'price'"
-        [error]="priceError"
       ></app-input>
     </div>
     <div class="col-12 col-sm-6 mb-3">
@@ -87,7 +84,6 @@
         [items]="cities"
         [formControlName]="'city'"
         [control]="newOfferForm.get('city')"
-        [error]="cityError"
       ></app-autocomplete>
     </div>
   </div>
@@ -109,11 +105,92 @@
 
   <h3>{{ "GENERAL_FEATURES" | translate }}</h3>
 
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.general; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getGeneralFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
+
   <h3>{{ "INDOOR_FEATURES" | translate }}</h3>
+
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.indoor; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getIndoorFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
 
   <h3>{{ "OUTDOOR_FEATURES" | translate }}</h3>
 
-  <button (click)="onShowFormValueClick()" class="btn btn-primary">
-    Show Form Value
-  </button>
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.outdoor; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getOutdoorFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="text-center">
+    @if (error) {
+      <div class="text-danger">
+        @if (error.type === "NO_CONTACT") {
+          <p>
+            {{ "PAGES.NEW_OFFER.ERRORS.NO_CONTACT" | translate }}
+
+            <a [href]="contactSettingsLink" target="_blank">
+              {{ "PAGES.NEW_OFFER.ERRORS.NO_CONTACT_ADD" | translate }}
+            </a>
+          </p>
+        } @else if (error.type === "CREATION_FAILED") {
+          <p>{{ "PAGES.NEW_OFFER.ERRORS.CREATION_FAILED" | translate }}</p>
+        }
+      </div>
+    }
+
+    <button
+      [disabled]="
+        newOfferForm.valid === false ||
+        imageUploaderComponent().images.length === 0 ||
+        (imageUploaderComponent().images.length > 0 &&
+          imageUploaderComponent().areAllImagesUploaded === false)
+      "
+      (click)="onCreateClick()"
+      class="btn btn-primary"
+    >
+      {{ "CREATE" | translate }}
+    </button>
+  </div>
 </form>
