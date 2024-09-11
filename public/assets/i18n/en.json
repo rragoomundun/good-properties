@@ -19,6 +19,27 @@
   "SUBMITTING": "Submitting...",
   "MODIFY": "Modify",
   "MODIFYING": "Modifying...",
+  "CREATE": "Create",
+  "CREATION": "Creation...",
+  "PHOTOS": "Photos",
+  "GENERAL_INFORMATIONS": "General Informations",
+  "DESCRIPTION": "Description",
+  "FEATURES": "Features",
+  "TYPE_OF_GOOD": "Type of Good",
+  "TRANSACTION_TYPE": "Transaction Type",
+  "SQUARE_METERS": "Square Meters",
+  "ROOMS": "Rooms",
+  "BEDROOMS": "Bedrooms",
+  "PRICE": "Price",
+  "CITY": "City",
+  "GENERAL_FEATURES": "General Features",
+  "INDOOR_FEATURES": "Indoor Features",
+  "OUTDOOR_FEATURES": "Outdoor Features",
+  "HOUSE": "House",
+  "APARTMENT": "Apartment",
+  "ROOM": "Room",
+  "TO_SELL": "To Sell",
+  "TO_RENT": "To Rent",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -84,7 +105,12 @@
       }
     },
     "NEW_OFFER": {
-      "TITLE": "New Offer"
+      "TITLE": "New Offer",
+      "ERRORS": {
+        "NO_CONTACT": "You must add contact informations in order to create an offer.",
+        "NO_CONTACT_ADD": "Add contact informations.",
+        "CREATION_FAILED": "Cannot create offer. Try again later."
+      }
     },
     "MY_OFFERS": {
       "TITLE": "My Offers"
@@ -108,6 +134,17 @@
           "TITLE": "Delete Account",
           "NAME": "Delete Account"
         }
+      }
+    }
+  },
+  "COMPONENTS": {
+    "IMAGE_UPLOADER": {
+      "UPLOAD_PHOTOS": "Upload Photos",
+      "UPLOAD_ONE": "Upload at least one photo",
+      "ERRORS": {
+        "SIZE": "The image exceeds the limit of 5 MB",
+        "MIMETYPE": "The image type must be a .jpeg, .png, .gif, or .webp",
+        "UPLOAD_FAILED": "Cannot upload file"
       }
     }
   }

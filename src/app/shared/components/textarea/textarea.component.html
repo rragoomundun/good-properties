@@ -1,0 +1,16 @@
+@if (label()) {
+  <label [for]="id()" class="form-label">
+    @if (icon()) {
+      <span [class]="icon()"></span>&nbsp;
+    }
+
+    <span>{{ label() | translate }}</span>
+  </label>
+}
+
+<textarea
+  [id]="id()"
+  [formControlName]="formControlName()"
+  class="form-control"
+  rows="5"
+></textarea>

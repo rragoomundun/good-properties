@@ -17,9 +17,10 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom", "DOM.Iterable"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
