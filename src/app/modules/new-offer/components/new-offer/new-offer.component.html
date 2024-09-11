@@ -1,1 +1,196 @@
-<p>new-offer works!</p>
+<form
+  [formGroup]="newOfferForm"
+  (keypress)="onFormKeyPress($event)"
+  id="main-container"
+  class="main-container-top-margin"
+>
+  <h1>{{ "PAGES.NEW_OFFER.TITLE" | translate }}</h1>
+  <hr />
+
+  <h2>{{ "PHOTOS" | translate }}</h2>
+  <hr />
+
+  <app-image-uploader #imageUploader></app-image-uploader>
+
+  <h2>{{ "GENERAL_INFORMATIONS" | translate }}</h2>
+  <hr />
+
+  <div class="row">
+    <div class="col-12 col-sm-6 mb-3">
+      <app-select
+        [id]="'type-of-good-select'"
+        [label]="'TYPE_OF_GOOD'"
+        [options]="[
+          { value: 'house', text: 'HOUSE' },
+          { value: 'apartment', text: 'APARTMENT' },
+          { value: 'room', text: 'ROOM' },
+        ]"
+        [formControlName]="'typeOfGood'"
+      ></app-select>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <app-select
+        [id]="'type-of-transaction-select'"
+        [label]="'TRANSACTION_TYPE'"
+        [options]="[
+          { value: 'to-rent', text: 'TO_RENT' },
+          { value: 'to-sell', text: 'TO_SELL' },
+        ]"
+        [formControlName]="'transactionType'"
+      ></app-select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-4 mb-3">
+      <app-input
+        [id]="'square-meters-input'"
+        [label]="'SQUARE_METERS'"
+        [type]="'number'"
+        [formControlName]="'squareMeters'"
+      ></app-input>
+    </div>
+    <div class="col-6 col-sm-4 mb-3">
+      <app-input
+        [id]="'rooms-input'"
+        [label]="'ROOMS'"
+        [type]="'number'"
+        [formControlName]="'rooms'"
+      ></app-input>
+    </div>
+    <div class="col-6 col-sm-4 mb-3">
+      <app-input
+        [id]="'bedrooms-input'"
+        [label]="'BEDROOMS'"
+        [type]="'number'"
+        [formControlName]="'bedrooms'"
+      ></app-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-6 mb-3">
+      <app-input
+        [id]="'price-input'"
+        [label]="'PRICE'"
+        [type]="'number'"
+        [formControlName]="'price'"
+      ></app-input>
+    </div>
+    <div class="col-12 col-sm-6 mb-3">
+      <app-autocomplete
+        [id]="'city-input'"
+        [label]="'CITY'"
+        [items]="cities"
+        [formControlName]="'city'"
+        [control]="newOfferForm.get('city')"
+      ></app-autocomplete>
+    </div>
+  </div>
+
+  <h2>{{ "DESCRIPTION" | translate }}</h2>
+  <hr />
+
+  <div class="row mb-3">
+    <div class="col">
+      <app-textarea
+        [id]="'description-textarea'"
+        [formControlName]="'description'"
+      ></app-textarea>
+    </div>
+  </div>
+
+  <h2>{{ "FEATURES" | translate }}</h2>
+  <hr />
+
+  <h3>{{ "GENERAL_FEATURES" | translate }}</h3>
+
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.general; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getGeneralFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
+
+  <h3>{{ "INDOOR_FEATURES" | translate }}</h3>
+
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.indoor; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getIndoorFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
+
+  <h3>{{ "OUTDOOR_FEATURES" | translate }}</h3>
+
+  @if (features) {
+    <div class="features mb-3">
+      @for (feature of features.outdoor; track feature) {
+        <div class="form-check">
+          <input
+            [id]="'general-feature-' + feature.id"
+            [formControl]="getOutdoorFeaturesControl($index)"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label [for]="'general-feature-' + feature.id">
+            {{ feature.name }}
+          </label>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="text-center">
+    @if (error) {
+      <div class="text-danger">
+        @if (error.type === "NO_CONTACT") {
+          <p>
+            {{ "PAGES.NEW_OFFER.ERRORS.NO_CONTACT" | translate }}
+
+            <a [href]="contactSettingsLink" target="_blank">
+              {{ "PAGES.NEW_OFFER.ERRORS.NO_CONTACT_ADD" | translate }}
+            </a>
+          </p>
+        } @else if (error.type === "CREATION_FAILED") {
+          <p>{{ "PAGES.NEW_OFFER.ERRORS.CREATION_FAILED" | translate }}</p>
+        }
+      </div>
+    }
+
+    <button
+      [disabled]="
+        newOfferForm.valid === false ||
+        imageUploaderComponent().images.length === 0 ||
+        (imageUploaderComponent().images.length > 0 &&
+          imageUploaderComponent().areAllImagesUploaded === false)
+      "
+      (click)="onCreateClick()"
+      class="btn btn-primary"
+    >
+      {{ "CREATE" | translate }}
+    </button>
+  </div>
+</form>
