@@ -1,1 +1,130 @@
-<p>offer works!</p>
+<div id="main-container" class="main-container-top-margin">
+  @if (!offer) {
+    <div id="offer-not-found">
+      <h2>{{ "PAGES.OFFER.NOT_FOUND" | translate }}</h2>
+      <p>{{ "PAGES.OFFER.NOT_FOUND_MESSAGE" | translate }}</p>
+    </div>
+  } @else {
+    <div id="offer-images" class="mb-3">
+      <ngb-carousel>
+        @for (image of offer.images; track image) {
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img [src]="image" alt="" />
+            </div>
+          </ng-template>
+        }
+      </ngb-carousel>
+    </div>
+
+    <div id="offer-intro" class="mb-3">
+      <h1>{{ title }}</h1>
+
+      <h5>{{ "RS" | translate }} {{ offer.price }} - {{ city }}</h5>
+
+      <ul>
+        <li>{{ offer.square_meters }} {{ "SQUARE_METERS_MIN" | translate }}</li>
+        <li>
+          {{ offer.nb_rooms }}
+          {{
+            offer.nb_rooms > 1
+              ? ("ROOMS_MIN" | translate)
+              : ("ROOM_MIN" | translate)
+          }}
+        </li>
+        <li>
+          {{ offer.nb_bedrooms }}
+          {{
+            offer.nb_bedrooms > 1
+              ? ("BEDROOMS_MIN" | translate)
+              : ("BEDROOM_MIN" | translate)
+          }}
+        </li>
+      </ul>
+    </div>
+
+    @if (offer.description) {
+      <div id="offer-description" class="mb-3">
+        <h2>{{ "DESCRIPTION" | translate }}</h2>
+
+        <div [innerHTML]="description"></div>
+      </div>
+    }
+
+    @if (
+      offer.features.general.length ||
+      offer.features.indoor.length ||
+      offer.features.outdoor.length
+    ) {
+      <div id="offer-features" class="mb-3">
+        <h2>{{ "FEATURES" | translate }}</h2>
+
+        @if (offer.features.general.length) {
+          <h3>{{ "GENERAL_FEATURES" | translate }}</h3>
+
+          <div class="app-features mb-3">
+            @for (feature of offer.features.general; track feature) {
+              <div>
+                <span class="fa fa-check"></span>&nbsp;
+                <span>{{ feature }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        @if (offer.features.indoor.length) {
+          <h3>{{ "INDOOR_FEATURES" | translate }}</h3>
+
+          <div class="app-features mb-3">
+            @for (feature of offer.features.indoor; track feature) {
+              <div>
+                <span class="fa fa-check"></span>&nbsp;
+                <span>{{ feature }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        @if (offer.features.outdoor.length) {
+          <h3>{{ "OUTDOOR_FEATURES" | translate }}</h3>
+
+          <div class="app-features mb-3">
+            @for (feature of offer.features.outdoor; track feature) {
+              <div>
+                <span class="fa fa-check"></span>&nbsp;
+                <span>{{ feature }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <div id="offer-contact" class="mb-3">
+      <h2>{{ "CONTACT" | translate }}</h2>
+
+      <ul>
+        @if (offer.contact.email) {
+          <li>
+            <span class="fa fa-envelope"></span>&nbsp;
+            <span>{{ offer.contact.email }}</span>
+          </li>
+        }
+
+        @if (offer.contact.telephone) {
+          <li>
+            <span class="fa fa-phone"></span>&nbsp;
+            <span>{{ offer.contact.telephone }}</span>
+          </li>
+        }
+
+        @if (offer.contact.whatsapp) {
+          <li>
+            <span class="fa-brands fa-whatsapp"></span>&nbsp;
+            <span>{{ offer.contact.whatsapp }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>
