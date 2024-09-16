@@ -22,4 +22,16 @@ export class MauritiusUtil {
 
     return null;
   }
+
+  static getNameFromCityId(cityId: number): string | null {
+    for (const state of stateCities) {
+      for (const city of state.cities) {
+        if (city.id === cityId) {
+          return city.name;
+        }
+      }
+    }
+
+    return null;
+  }
 }

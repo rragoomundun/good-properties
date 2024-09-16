@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Features } from '../../models/Features.model';
 import { NewOffer } from '../../models/NewOffer.model';
+import { Offer } from '../../models/Offer.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,10 @@ export class OfferService {
 
   getFeatures(): Observable<Features> {
     return this.http.get<Features>(`${this.API_PREFIX}/features`);
+  }
+
+  getOffer(offerId: number): Observable<Offer> {
+    return this.http.get<Offer>(`${this.API_PREFIX}/${offerId}`);
   }
 
   createOffer(

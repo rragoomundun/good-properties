@@ -1,0 +1,14 @@
+#offer-not-found {
+  text-align: center;
+  margin-top: 10rem;
+}
+
+#offer-images {
+  .picsum-img-wrapper {
+    img {
+      width: 100%;
+      height: 40vh;
+      object-fit: cover;
+    }
+  }
+}
