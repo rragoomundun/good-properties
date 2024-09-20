@@ -47,6 +47,8 @@
   "TO_SELL": "To Sell",
   "TO_RENT": "To Rent",
   "RS": "Rs.",
+  "PREVIOUS": "Previous",
+  "NEXT": "Next",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -124,7 +126,8 @@
       "NOT_FOUND_MESSAGE": "This offer cannot be found."
     },
     "MY_OFFERS": {
-      "TITLE": "My Offers"
+      "TITLE": "My Offers",
+      "NO_OFFERS": "You have no offers."
     },
     "SETTINGS": {
       "TABS": {
@@ -157,6 +160,9 @@
         "MIMETYPE": "The image type must be a .jpeg, .png, .gif, or .webp",
         "UPLOAD_FAILED": "Cannot upload file"
       }
+    },
+    "OFFER_ITEM": {
+      "SEE_OFFER": "See Offer"
     }
   }
 }
