@@ -1,0 +1,145 @@
+<nav>
+  <ul class="pagination justify-content-center">
+    <li [class.disabled]="page === 1" class="page-item">
+      <a
+        [routerLink]="['./']"
+        [queryParams]="{ page: page - 1 }"
+        [queryParamsHandling]="'merge'"
+        class="page-link"
+      >
+        {{ "PREVIOUS" | translate }}
+      </a>
+    </li>
+
+    @if (nbPages <= 4) {
+      @for (p of pages; track p) {
+        <li [class.active]="p === page" class="page-item">
+          <a
+            [routerLink]="['./']"
+            [queryParams]="{ page: p }"
+            [queryParamsHandling]="'merge'"
+            class="page-link"
+          >
+            {{ p }}
+          </a>
+        </li>
+      }
+    } @else {
+      @if (page <= 3) {
+        @for (p of [1, 2, 3, 4]; track p) {
+          <li [class.active]="p === page" class="page-item">
+            <a
+              [routerLink]="['./']"
+              [queryParams]="{ page: p }"
+              [queryParamsHandling]="'merge'"
+              class="page-link"
+            >
+              {{ p }}
+            </a>
+          </li>
+        }
+
+        @if (nbPages > 5) {
+          <li class="page-item">
+            <a class="page-link">...</a>
+          </li>
+        }
+
+        <li class="page-item">
+          <a
+            [routerLink]="['./']"
+            [queryParams]="{ page: nbPages }"
+            [queryParamsHandling]="'merge'"
+            class="page-link"
+          >
+            {{ nbPages }}
+          </a>
+        </li>
+      } @else if (page > nbPages - 3) {
+        <li class="page-item">
+          <a
+            [routerLink]="['./']"
+            [queryParams]="{ page: 1 }"
+            [queryParamsHandling]="'merge'"
+            class="page-link"
+          >
+            1
+          </a>
+        </li>
+
+        @if (nbPages > 5) {
+          <li class="page-item">
+            <a class="page-link">...</a>
+          </li>
+        }
+
+        @for (p of pagesEnd; track p) {
+          <li [class.active]="p === page" class="page-item">
+            <a
+              [routerLink]="['./']"
+              [queryParams]="{ page: p }"
+              [queryParamsHandling]="'merge'"
+              class="page-link"
+            >
+              {{ p }}
+            </a>
+          </li>
+        }
+      } @else {
+        <li class="page-item">
+          <a
+            [routerLink]="['./']"
+            [queryParams]="{ page: 1 }"
+            [queryParamsHandling]="'merge'"
+            class="page-link"
+          >
+            1
+          </a>
+        </li>
+
+        <li class="page-item">
+          <a class="page-link">...</a>
+        </li>
+
+        @for (p of pagesIn; track p) {
+          <li [class.active]="p === page" class="page-item">
+            <a
+              [routerLink]="['./']"
+              [queryParams]="{ page: p }"
+              [queryParamsHandling]="'merge'"
+              class="page-link"
+            >
+              {{ p }}
+            </a>
+          </li>
+        }
+
+        <li class="page-item">
+          <a class="page-link">...</a>
+        </li>
+
+        <li class="page-item">
+          <a
+            [routerLink]="['./']"
+            [queryParams]="{ page: nbPages }"
+            [queryParamsHandling]="'merge'"
+            class="page-link"
+          >
+            {{ nbPages }}
+          </a>
+        </li>
+      }
+    }
+
+    <li [class.disabled]="page === nbPages" class="page-item">
+      <a
+        [routerLink]="['./']"
+        [queryParams]="{ page: page + 1 }"
+        [queryParamsHandling]="'merge'"
+        class="page-link"
+      >
+        {{ "NEXT" | translate }}
+      </a>
+    </li>
+  </ul>
+</nav>
