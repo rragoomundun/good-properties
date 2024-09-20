@@ -6,6 +6,8 @@ import { ContactEffects } from '../shared/store/contact/effects';
 import { SettingsEffects } from '../modules/settings/store/effects';
 import { ImageUploadEffects } from '../shared/store/image-upload/effects';
 import { NewOfferEffects } from '../modules/new-offer/store/effects';
+import { OfferEffects } from '../modules/offer/store/effects';
+import { MyOfferEffects } from '../modules/my-offers/store/effects';
 
 import {
   registerReducer,
@@ -23,6 +25,8 @@ import {
 } from '../modules/settings/store/reducers';
 import { imageUploadReducer } from '../shared/store/image-upload/reducers';
 import { newOfferFeaturesReducer } from '../modules/new-offer/store/reducers';
+import { offerReducer } from '../modules/offer/store/reducers';
+import { myOffersReducer } from '../modules/my-offers/store/reducers';
 
 import { RegisterState } from '../modules/auth/store/register.state';
 import { RegisterConfirmState } from '../modules/auth/store/register-confirm.state';
@@ -36,6 +40,8 @@ import { SettingsAccountPasswordState } from '../modules/settings/store/settings
 import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
 import { ImageUploadState } from '../shared/store/image-upload/image-upload.state';
 import { NewOfferFeaturesState } from '../modules/new-offer/store/new-offer-features.state';
+import { OfferState } from '../modules/offer/store/offer.state';
+import { MyOffersState } from '../modules/my-offers/store/my-offers.state';
 
 export interface AppState {
   register: RegisterState;
@@ -50,6 +56,8 @@ export interface AppState {
   settingsAccountContact: SettingsAccountContactState;
   imageUpload: ImageUploadState;
   newOfferFeatures: NewOfferFeaturesState;
+  offer: OfferState;
+  myOffers: MyOffersState;
 }
 
 export interface AppStore {
@@ -65,6 +73,8 @@ export interface AppStore {
   settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
   imageUpload: ActionReducer<ImageUploadState, Action>;
   newOfferFeatures: ActionReducer<NewOfferFeaturesState, Action>;
+  offer: ActionReducer<OfferState, Action>;
+  myOffers: ActionReducer<MyOffersState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -80,6 +90,8 @@ export const appStore: AppStore = {
   settingsAccountContact: settingsAccountContactReducer,
   imageUpload: imageUploadReducer,
   newOfferFeatures: newOfferFeaturesReducer,
+  offer: offerReducer,
+  myOffers: myOffersReducer,
 };
 
 export const appEffects = [
@@ -89,4 +101,6 @@ export const appEffects = [
   SettingsEffects,
   ImageUploadEffects,
   NewOfferEffects,
+  OfferEffects,
+  MyOfferEffects,
 ];

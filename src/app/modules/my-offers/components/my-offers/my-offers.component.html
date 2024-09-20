@@ -1,1 +1,15 @@
-<p>my-offers works!</p>
+<div id="main-container" class="main-container-top-margin">
+  <h1>{{ "PAGES.MY_OFFERS.TITLE" | translate }}</h1>
+  <hr />
+
+  @if (offers.length === 0) {
+    <p>{{ "PAGES.MY_OFFERS.NO_OFFERS" | translate }}</p>
+  } @else {
+    <app-offer [offers]="offers"></app-offer>
+  }
+
+  @if (meta && meta.nb_pages) {
+    <br />
+    <app-pagination [nbPages]="meta.nb_pages"></app-pagination>
+  }
+</div>

@@ -1,0 +1,70 @@
+<div class="card mb-3">
+  <div id="images">
+    <ngb-carousel>
+      @for (image of offer().images; track image) {
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img [src]="image" alt="" />
+          </div>
+        </ng-template>
+      }
+    </ngb-carousel>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">
+      @if (offer().type_of_good === "house") {
+        {{ "HOUSE" | translate }}
+      } @else if (offer().type_of_good === "apartment") {
+        {{ "APARTMENT" | translate }}
+      } @else {
+        {{ "ROOM" | translate }}
+      }
+
+      -
+
+      @if (offer().transaction_type === "to-sell") {
+        {{ "TO_SELL" | translate }}
+      } @else {
+        {{ "TO_RENT" | translate }}
+      }
+    </h5>
+    <div class="card-text">
+      <p>
+        {{ "RS" | translate }} {{ offer().price }}
+
+        <br />
+
+        {{ city }}
+      </p>
+
+      <ul>
+        <li>
+          {{ offer().square_meters }} {{ "SQUARE_METERS_MIN" | translate }}
+        </li>
+        <li>
+          {{ offer().nb_rooms }}
+          {{
+            offer().nb_rooms > 1
+              ? ("ROOMS_MIN" | translate)
+              : ("ROOM_MIN" | translate)
+          }}
+        </li>
+        <li>
+          {{ offer().nb_bedrooms }}
+          {{
+            offer().nb_bedrooms > 1
+              ? ("BEDROOMS_MIN" | translate)
+              : ("BEDROOM_MIN" | translate)
+          }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-center">
+      <a [routerLink]="['/offer', offer().id]" class="btn btn-primary">
+        {{ "COMPONENTS.OFFER_ITEM.SEE_OFFER" | translate }}
+      </a>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 
 import { Features } from '../../models/Features.model';
 import { NewOffer } from '../../models/NewOffer.model';
+import { Offer } from '../../models/Offer.model';
+import { MyOffersMeta } from '../../models/MyOffersMeta.model';
+import { OfferItem } from '../../models/OfferItem.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +20,23 @@ export class OfferService {
 
   getFeatures(): Observable<Features> {
     return this.http.get<Features>(`${this.API_PREFIX}/features`);
+  }
+
+  getOffer(offerId: number): Observable<Offer> {
+    return this.http.get<Offer>(`${this.API_PREFIX}/${offerId}`);
+  }
+
+  getMyOffersMeta(): Observable<MyOffersMeta> {
+    return this.http.get<MyOffersMeta>(`${this.API_PREFIX}/my-offers/meta`, {
+      withCredentials: true,
+    });
+  }
+
+  getMyOffers(page: number): Observable<OfferItem[]> {
+    return this.http.get<OfferItem[]>(`${this.API_PREFIX}/my-offers`, {
+      withCredentials: true,
+      params: { page },
+    });
   }
 
   createOffer(

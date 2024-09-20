@@ -28,18 +28,27 @@
   "TYPE_OF_GOOD": "Type of Good",
   "TRANSACTION_TYPE": "Transaction Type",
   "SQUARE_METERS": "Square Meters",
+  "SQUARE_METERS_MIN": "square meters",
   "ROOMS": "Rooms",
+  "ROOM_MIN": "room",
+  "ROOMS_MIN": "rooms",
   "BEDROOMS": "Bedrooms",
+  "BEDROOM_MIN": "bedroom",
+  "BEDROOMS_MIN": "bedrooms",
   "PRICE": "Price",
   "CITY": "City",
   "GENERAL_FEATURES": "General Features",
   "INDOOR_FEATURES": "Indoor Features",
   "OUTDOOR_FEATURES": "Outdoor Features",
+  "CONTACT": "Contact",
   "HOUSE": "House",
   "APARTMENT": "Apartment",
   "ROOM": "Room",
   "TO_SELL": "To Sell",
   "TO_RENT": "To Rent",
+  "RS": "Rs.",
+  "PREVIOUS": "Previous",
+  "NEXT": "Next",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -112,8 +121,13 @@
         "CREATION_FAILED": "Cannot create offer. Try again later."
       }
     },
+    "OFFER": {
+      "NOT_FOUND": "Offer Not Found",
+      "NOT_FOUND_MESSAGE": "This offer cannot be found."
+    },
     "MY_OFFERS": {
-      "TITLE": "My Offers"
+      "TITLE": "My Offers",
+      "NO_OFFERS": "You have no offers."
     },
     "SETTINGS": {
       "TABS": {
@@ -146,6 +160,9 @@
         "MIMETYPE": "The image type must be a .jpeg, .png, .gif, or .webp",
         "UPLOAD_FAILED": "Cannot upload file"
       }
+    },
+    "OFFER_ITEM": {
+      "SEE_OFFER": "See Offer"
     }
   }
 }
