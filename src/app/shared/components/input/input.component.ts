@@ -32,6 +32,7 @@ export class InputComponent implements ControlValueAccessor {
   id = input<string>();
   icon = input<string>();
   label = input<string>();
+  placeholder = input<string>();
   type = input<string>();
   formControlName = input<string>();
   error = input<string>();
