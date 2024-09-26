@@ -51,6 +51,11 @@
   "RS": "Rs.",
   "PREVIOUS": "Previous",
   "NEXT": "Next",
+  "ACTION": "Action",
+  "MIN": "Min",
+  "MAX": "Max",
+  "SEARCH": "Search",
+  "MORE_FILTERS": "More Filters",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
