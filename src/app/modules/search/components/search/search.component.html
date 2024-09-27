@@ -31,7 +31,15 @@
           </div>
 
           <div class="row">
-            <div class="col-12"></div>
+            <div class="col-12 mb-3">
+              <app-autocomplete-select
+                [id]="'cities-input'"
+                [label]="'CITIES'"
+                [items]="cities"
+                [formControlName]="'cities'"
+                [control]="searchForm.get('cities')"
+              ></app-autocomplete-select>
+            </div>
           </div>
 
           <div class="row">
@@ -60,6 +68,8 @@
           <div class="row">
             <div class="col">
               <button class="btn btn-outline-secondary">
+                <span class="fa-solid fa-sliders"></span>
+                &nbsp;
                 {{ "MORE_FILTERS" | translate }}
               </button>
             </div>
