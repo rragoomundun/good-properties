@@ -1,10 +1,12 @@
-<label [for]="id()" class="form-label">
-  @if (icon()) {
-    <span [class]="icon()"></span>&nbsp;
-  }
+@if (label()) {
+  <label [for]="id()" class="form-label">
+    @if (icon()) {
+      <span [class]="icon()"></span>&nbsp;
+    }
 
-  <span>{{ label() | translate }}</span>
-</label>
+    <span>{{ label() | translate }}</span>
+  </label>
+}
 
 <div [class.has-validation]="error()" class="input-group">
   <input
@@ -12,6 +14,7 @@
     [id]="id()"
     [type]="type()"
     [min]="0"
+    [placeholder]="placeholder() ? (placeholder() | translate) : ''"
     [formControlName]="formControlName()"
     class="form-control"
   />
