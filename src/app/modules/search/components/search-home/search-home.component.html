@@ -1,0 +1,42 @@
+<div id="main-container" class="main-container-top-margin">
+  <h1>{{ "PAGES.HOME.WELCOME" | translate }}</h1>
+
+  <br />
+
+  <p>{{ "PAGES.HOME.INTRO" | translate }}</p>
+
+  <h2>{{ "PAGES.HOME.SEARCH_EXAMPLES" | translate }}</h2>
+
+  <div id="search-examples">
+    <a
+      [routerLink]="['/']"
+      [queryParams]="{
+        type_of_good: 'apartment',
+        transaction_type: 'to-rent',
+        city_ids: 67857,
+      }"
+    >
+      <h5>{{ "PAGES.HOME.APARTMENT_EBENE" | translate }}</h5>
+    </a>
+    <a
+      [routerLink]="['/']"
+      [queryParams]="{
+        type_of_good: 'room',
+        transaction_type: 'to-rent',
+        city_ids: 67895,
+      }"
+    >
+      <h5>{{ "PAGES.HOME.ROOMS_PORT_LOUIS" | translate }}</h5>
+    </a>
+    <a
+      [routerLink]="['/']"
+      [queryParams]="{
+        type_of_good: 'house',
+        transaction_type: 'to-rent',
+        city_ids: 67865,
+      }"
+    >
+      <h5>{{ "PAGES.HOME.HOUSES_GRAND_GAUBE" | translate }}</h5>
+    </a>
+  </div>
+</div>

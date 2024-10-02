@@ -288,7 +288,11 @@ export class SearchFormComponent implements OnInit {
       queryParams.nb_bedrooms = nbBedrooms;
     }
 
-    if (generalFeatures || indoorFeatures || outdoorFeatures) {
+    if (
+      generalFeatures.includes(true) ||
+      indoorFeatures.includes(true) ||
+      outdoorFeatures.includes(true)
+    ) {
       for (let i = 0; i < this.features.general.length; i++) {
         if (this.getGeneralFeaturesControl(i).value) {
           features.push(this.features.general[i].id);
