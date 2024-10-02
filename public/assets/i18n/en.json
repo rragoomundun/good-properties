@@ -79,6 +79,14 @@
       "TITLE": "Page Not Found",
       "MESSAGE": "The page that you are trying to access does not exists."
     },
+    "HOME": {
+      "WELCOME": "Welcome to Good Properties!",
+      "INTRO": "Welcome to Good Properties, your premier destination for all things real estate! Whether you’re looking to buy or rent, this website contains everything you need. Explore our extensive listings, discover valuable resources, and find your dream property.",
+      "SEARCH_EXAMPLES": "Search Examples",
+      "APARTMENT_EBENE": "Apartments in Ebene",
+      "ROOMS_PORT_LOUIS": "Rooms in Port-Louis",
+      "HOUSES_GRAND_GAUBE": "Houses in Grand-Gaube"
+    },
     "REGISTER": {
       "REGISTER_ON": "Register on Good Properties",
       "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",

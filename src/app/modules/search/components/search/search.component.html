@@ -1,1 +1,7 @@
 <app-search-form></app-search-form>
+
+@if (displaySearchResults) {
+  <app-search-results></app-search-results>
+} @else {
+  <app-search-home></app-search-home>
+}
