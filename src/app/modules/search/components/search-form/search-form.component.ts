@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
@@ -115,8 +115,49 @@ export class SearchFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(SearchActions.getFeatures());
+    this.activatedRoute.queryParams.subscribe((queryParams: Params) => {
+      if (Object.keys(queryParams).length === 0) {
+        this.initControls();
+      } else {
+        this.setControls();
+      }
+    });
+  }
 
-    // Init controls if they are query parameters
+  initControls(): void {
+    this.searchForm.controls['transactionType'].setValue('to-rent');
+    this.searchForm.controls['typeOfGood'].setValue('house');
+
+    this.searchForm.controls['cities'].setValue('');
+    this.autocompleteSelectMultipleComponent().selectedItems = [];
+
+    this.searchForm.controls['minPrice'].setValue(null);
+    this.searchForm.controls['maxPrice'].setValue(null);
+    this.searchForm.controls['minSquareMeters'].setValue(null);
+    this.searchForm.controls['maxSquareMeters'].setValue(null);
+    this.searchForm.controls['nbRooms'].setValue(null);
+    this.searchForm.controls['nbBedrooms'].setValue(null);
+
+    for (const control of (<FormArray>(
+      this.searchForm.controls['generalFeatures']
+    )).controls) {
+      control.setValue(false);
+    }
+
+    for (const control of (<FormArray>(
+      this.searchForm.controls['indoorFeatures']
+    )).controls) {
+      control.setValue(false);
+    }
+
+    for (const control of (<FormArray>(
+      this.searchForm.controls['outdoorFeatures']
+    )).controls) {
+      control.setValue(false);
+    }
+  }
+
+  setControls(): void {
     const { queryParams } = this.activatedRoute.snapshot;
 
     if (queryParams['type_of_good']) {
@@ -133,6 +174,7 @@ export class SearchFormComponent implements OnInit {
 
     if (queryParams['city_ids']) {
       const cityIds = queryParams['city_ids'].split(',');
+      this.autocompleteSelectMultipleComponent().selectedItems = [];
 
       setTimeout(() => {
         for (const cityId of cityIds) {

@@ -23,4 +23,55 @@ export class SearchEffects {
       ),
     ),
   );
+
+  getSearchMeta$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SearchActions.getSearchMeta),
+      concatMap((action) =>
+        this.offerService
+          .getSearchMeta(
+            action.transactionType,
+            action.typeOfGood,
+            action.cityIds,
+            action.minPrice,
+            action.maxPrice,
+            action.minSquareMeters,
+            action.maxSquareMeters,
+            action.nbRooms,
+            action.nbBedrooms,
+            action.features,
+          )
+          .pipe(
+            map((meta) => SearchActions.getSearchMetaSuccess({ meta })),
+            catchError((error) => of(SearchActions.getSearchMetaFailed())),
+          ),
+      ),
+    ),
+  );
+
+  search$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SearchActions.searchOffers),
+      concatMap((action) =>
+        this.offerService
+          .search(
+            action.transactionType,
+            action.typeOfGood,
+            action.cityIds,
+            action.minPrice,
+            action.maxPrice,
+            action.minSquareMeters,
+            action.maxSquareMeters,
+            action.nbRooms,
+            action.nbBedrooms,
+            action.features,
+            action.page,
+          )
+          .pipe(
+            map((offers) => SearchActions.searchOffersSuccess({ offers })),
+            catchError((error) => of(SearchActions.searchOffersFailed())),
+          ),
+      ),
+    ),
+  );
 }

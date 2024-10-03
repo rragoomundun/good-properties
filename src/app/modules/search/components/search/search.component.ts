@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { SearchHomeComponent } from '../search-home/search-home.component';
-import { SearchResultsComponent } from '../../search-results/search-results.component';
+import { SearchResultsComponent } from '../search-results/search-results.component';
 
 @Component({
   selector: 'app-search',

@@ -1,0 +1,12 @@
+<div id="main-container" class="main-container-top-margin">
+  @if (offers.length === 0) {
+    <p>{{ "PAGES.SEARCH_RESULTS.NO_OFFERS" | translate }}</p>
+  } @else {
+    <app-offer [offers]="offers"></app-offer>
+  }
+
+  @if (meta && meta.nb_pages) {
+    <br />
+    <app-pagination [nbPages]="meta.nb_pages"></app-pagination>
+  }
+</div>

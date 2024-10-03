@@ -87,6 +87,9 @@
       "ROOMS_PORT_LOUIS": "Rooms in Port-Louis",
       "HOUSES_GRAND_GAUBE": "Houses in Grand-Gaube"
     },
+    "SEARCH_RESULTS": {
+      "NO_OFFERS": "No offers found."
+    },
     "REGISTER": {
       "REGISTER_ON": "Register on Good Properties",
       "REGISTRATION_SUCCESSFUL": "Registration successful. An e-mail has been sent to your adress. Please consult it in order to confirm your account.",
