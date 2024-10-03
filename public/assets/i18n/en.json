@@ -57,8 +57,6 @@
   "MAX": "Max",
   "SEARCH": "Search",
   "MORE_FILTERS": "More Filters",
-  "DELETE": "Delete",
-  "DELETING": "Deleting...",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",

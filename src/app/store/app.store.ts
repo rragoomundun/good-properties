@@ -47,7 +47,6 @@ import { NewOfferFeaturesState } from '../modules/new-offer/store/new-offer-feat
 import { OfferState } from '../modules/offer/store/offer.state';
 import { MyOffersState } from '../modules/my-offers/store/my-offers.state';
 import { SearchState } from '../modules/search/store/search.state';
-import { SettingsAccountDeleteState } from '../modules/settings/store/settings-account-delete.state';
 
 export interface AppState {
   register: RegisterState;
@@ -66,7 +65,6 @@ export interface AppState {
   offer: OfferState;
   myOffers: MyOffersState;
   search: SearchState;
-  settingsAccountDelete: SettingsAccountDeleteState;
 }
 
 export interface AppStore {
@@ -86,7 +84,6 @@ export interface AppStore {
   offer: ActionReducer<OfferState, Action>;
   myOffers: ActionReducer<MyOffersState, Action>;
   search: ActionReducer<SearchState, Action>;
-  settingsAccountDelete: ActionReducer<SettingsAccountDeleteState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -106,7 +103,6 @@ export const appStore: AppStore = {
   offer: offerReducer,
   myOffers: myOffersReducer,
   search: searchReducer,
-  settingsAccountDelete: settingsAccountDeleteReducer,
 };
 
 export const appEffects = [
