@@ -10,3 +10,13 @@ export const selectSearchFeatures = createSelector(
   searchState,
   (state: SearchState) => state.features,
 );
+
+export const selectSearchMeta = createSelector(
+  searchState,
+  (state: SearchState) => state.meta,
+);
+
+export const selectSearchOffers = createSelector(
+  searchState,
+  (state: SearchState) => state.offers,
+);
