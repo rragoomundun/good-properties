@@ -1,0 +1,49 @@
+@if (label()) {
+  <label class="form-label">
+    @if (icon()) {
+      <span [class]="icon()"></span>&nbsp;
+    }
+
+    <span>{{ label() | translate }}</span>
+  </label>
+}
+
+<div id="inputs">
+  <div [class.has-validation]="errorMin()" class="input-group">
+    <input
+      [class.is-invalid]="errorMin()"
+      [id]="idMin()"
+      [min]="0"
+      [placeholder]="'MIN' | translate"
+      [formControlName]="formControlNameMin()"
+      type="number"
+      class="form-control"
+    />
+
+    @if (errorMin()) {
+      <div class="invalid-feedback">
+        {{ errorMin() | translate }}
+      </div>
+    }
+  </div>
+
+  <div class="ms-1 me-1">-</div>
+
+  <div [class.has-validation]="errorMax()" class="input-group">
+    <input
+      [class.is-invalid]="errorMax()"
+      [id]="idMax()"
+      [min]="0"
+      [placeholder]="'MAX' | translate"
+      [formControlName]="formControlNameMax()"
+      type="number"
+      class="form-control"
+    />
+
+    @if (errorMax()) {
+      <div class="invalid-feedback">
+        {{ errorMax() | translate }}
+      </div>
+    }
+  </div>
+</div>

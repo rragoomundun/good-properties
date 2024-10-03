@@ -37,6 +37,7 @@
   "BEDROOMS_MIN": "bedrooms",
   "PRICE": "Price",
   "CITY": "City",
+  "CITIES": "Cities",
   "GENERAL_FEATURES": "General Features",
   "INDOOR_FEATURES": "Indoor Features",
   "OUTDOOR_FEATURES": "Outdoor Features",
@@ -49,6 +50,11 @@
   "RS": "Rs.",
   "PREVIOUS": "Previous",
   "NEXT": "Next",
+  "ACTION": "Action",
+  "MIN": "Min",
+  "MAX": "Max",
+  "SEARCH": "Search",
+  "MORE_FILTERS": "More Filters",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -70,6 +76,17 @@
     "NOT_FOUND": {
       "TITLE": "Page Not Found",
       "MESSAGE": "The page that you are trying to access does not exists."
+    },
+    "HOME": {
+      "WELCOME": "Welcome to Good Properties!",
+      "INTRO": "Welcome to Good Properties, your premier destination for all things real estate! Whether you’re looking to buy or rent, this website contains everything you need. Explore our extensive listings, discover valuable resources, and find your dream property.",
+      "SEARCH_EXAMPLES": "Search Examples",
+      "APARTMENT_EBENE": "Apartments in Ebene",
+      "ROOMS_PORT_LOUIS": "Rooms in Port-Louis",
+      "HOUSES_GRAND_GAUBE": "Houses in Grand-Gaube"
+    },
+    "SEARCH_RESULTS": {
+      "NO_OFFERS": "No offers found."
     },
     "REGISTER": {
       "REGISTER_ON": "Register on Good Properties",

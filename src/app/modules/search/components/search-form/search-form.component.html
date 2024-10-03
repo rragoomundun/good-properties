@@ -1,0 +1,199 @@
+<div id="search-container">
+  <div id="main-container">
+    <div id="search" class="card">
+      <div class="card-body">
+        <form [formGroup]="searchForm">
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-3">
+              <app-select
+                [id]="'action-select'"
+                [label]="'ACTION'"
+                [options]="[
+                  { value: 'to-rent', text: 'TO_RENT' },
+                  { value: 'to-sell', text: 'TO_SELL' },
+                ]"
+                [formControlName]="'transactionType'"
+              >
+              </app-select>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+              <app-select
+                [id]="'type-of-good-select'"
+                [label]="'TYPE_OF_GOOD'"
+                [options]="[
+                  { value: 'house', text: 'HOUSE' },
+                  { value: 'apartment', text: 'APARTMENT' },
+                  { value: 'room', text: 'ROOM' },
+                ]"
+                [formControlName]="'typeOfGood'"
+              ></app-select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 mb-3">
+              <app-autocomplete-select-multiple
+                #citiesSelect
+                [id]="'cities-input'"
+                [label]="'CITIES'"
+                [items]="cities"
+                [formControlName]="'cities'"
+                [control]="searchForm.get('cities')"
+              ></app-autocomplete-select-multiple>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-3">
+              <app-input-min-max
+                [label]="'PRICE'"
+                [idMin]="'min-price-input'"
+                [formControlNameMin]="'minPrice'"
+                [idMax]="'max-price-input'"
+                [formControlNameMax]="'maxPrice'"
+              >
+              </app-input-min-max>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+              <app-input-min-max
+                [label]="'SQUARE_METERS'"
+                [idMin]="'min-square-meters-input'"
+                [formControlNameMin]="'minSquareMeters'"
+                [idMax]="'max-square-meters-input'"
+                [formControlNameMax]="'maxSquareMeters'"
+              >
+              </app-input-min-max>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <button
+                (click)="onMoreFiltersClick(moreFiltersModal)"
+                type="button"
+                class="btn btn-outline-secondary"
+              >
+                <span class="fa-solid fa-sliders"></span>
+                &nbsp;
+                {{ "MORE_FILTERS" | translate }}
+              </button>
+            </div>
+            <div class="col text-end">
+              <button
+                [disabled]="isFormValid === false"
+                (click)="onSearchClick()"
+                type="button"
+                class="btn btn-primary"
+              >
+                <span class="fa-solid fa-magnifying-glass"></span>
+                &nbsp;
+                <span>{{ "SEARCH" | translate }}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #moreFiltersModal let-moreFiltersModal>
+  <div class="modal-header">
+    <h4 class="modal-title">
+      {{ "MORE_FILTERS" | translate }}
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="moreFiltersModal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="col-12 col-sm-6 mb-3">
+          <app-input
+            [id]="'rooms-input'"
+            [label]="'ROOMS'"
+            [type]="'number'"
+            [formControlName]="'nbRooms'"
+          >
+          </app-input>
+        </div>
+        <div class="col-12 col-sm-6 mb-3">
+          <app-input
+            [id]="'bedrooms-input'"
+            [label]="'BEDROOMS'"
+            [type]="'number'"
+            [formControlName]="'nbBedrooms'"
+          >
+          </app-input>
+        </div>
+      </div>
+
+      <hr />
+
+      <h4>{{ "FEATURES" | translate }}</h4>
+
+      <h5>{{ "GENERAL_FEATURES" | translate }}</h5>
+
+      @if (features) {
+        <div class="app-features mb-3">
+          @for (feature of features.general; track feature) {
+            <div class="form-check">
+              <input
+                [id]="'general-feature-' + feature.id"
+                [formControl]="getGeneralFeaturesControl($index)"
+                type="checkbox"
+                class="form-check-input"
+              />
+              <label [for]="'general-feature-' + feature.id">
+                {{ feature.name }}
+              </label>
+            </div>
+          }
+        </div>
+      }
+
+      <h5>{{ "INDOOR_FEATURES" | translate }}</h5>
+
+      @if (features) {
+        <div class="app-features mb-3">
+          @for (feature of features.indoor; track feature) {
+            <div class="form-check">
+              <input
+                [id]="'general-feature-' + feature.id"
+                [formControl]="getIndoorFeaturesControl($index)"
+                type="checkbox"
+                class="form-check-input"
+              />
+              <label [for]="'general-feature-' + feature.id">
+                {{ feature.name }}
+              </label>
+            </div>
+          }
+        </div>
+      }
+
+      <h5>{{ "OUTDOOR_FEATURES" | translate }}</h5>
+
+      @if (features) {
+        <div class="app-features mb-3">
+          @for (feature of features.outdoor; track feature) {
+            <div class="form-check">
+              <input
+                [id]="'general-feature-' + feature.id"
+                [formControl]="getOutdoorFeaturesControl($index)"
+                type="checkbox"
+                class="form-check-input"
+              />
+              <label [for]="'general-feature-' + feature.id">
+                {{ feature.name }}
+              </label>
+            </div>
+          }
+        </div>
+      }
+    </form>
+  </div>
+</ng-template>

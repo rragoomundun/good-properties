@@ -7,6 +7,7 @@ import { NewOffer } from '../../models/NewOffer.model';
 import { Offer } from '../../models/Offer.model';
 import { MyOffersMeta } from '../../models/MyOffersMeta.model';
 import { OfferItem } from '../../models/OfferItem.model';
+import { SearchMeta } from '../../models/SearchMeta.model';
 
 @Injectable({
   providedIn: 'root',
@@ -66,6 +67,113 @@ export class OfferService {
 
     return this.http.post<NewOffer>(this.API_PREFIX, body, {
       withCredentials: true,
+    });
+  }
+
+  getSearchMeta(
+    transactionType: string,
+    typeOfGood: string,
+    cityIds: string,
+    minPrice: number,
+    maxPrice: number,
+    minSquareMeters: number,
+    maxSquareMeters: number,
+    nbRooms: number,
+    nbBedrooms: number,
+    features: string,
+  ): Observable<SearchMeta> {
+    const params: any = {
+      transaction_type: transactionType,
+      type_of_good: typeOfGood,
+      city_ids: cityIds,
+    };
+
+    if (minPrice) {
+      params.min_price = minPrice;
+    }
+
+    if (maxPrice) {
+      params.max_price = maxPrice;
+    }
+
+    if (minSquareMeters) {
+      params.min_square_meters = minSquareMeters;
+    }
+
+    if (maxSquareMeters) {
+      params.max_square_meters = maxSquareMeters;
+    }
+
+    if (nbRooms) {
+      params.nb_rooms = nbRooms;
+    }
+
+    if (nbBedrooms) {
+      params.nb_bedrooms = nbBedrooms;
+    }
+
+    if (features) {
+      params.features = features;
+    }
+
+    return this.http.get<SearchMeta>(`${this.API_PREFIX}/search/meta`, {
+      params,
+    });
+  }
+
+  search(
+    transactionType: string,
+    typeOfGood: string,
+    cityIds: string,
+    minPrice: number,
+    maxPrice: number,
+    minSquareMeters: number,
+    maxSquareMeters: number,
+    nbRooms: number,
+    nbBedrooms: number,
+    features: string,
+    page: number,
+  ): Observable<OfferItem[]> {
+    const params: any = {
+      transaction_type: transactionType,
+      type_of_good: typeOfGood,
+      city_ids: cityIds,
+    };
+
+    if (minPrice) {
+      params.min_price = minPrice;
+    }
+
+    if (maxPrice) {
+      params.max_price = maxPrice;
+    }
+
+    if (minSquareMeters) {
+      params.min_square_meters = minSquareMeters;
+    }
+
+    if (maxSquareMeters) {
+      params.max_square_meters = maxSquareMeters;
+    }
+
+    if (nbRooms) {
+      params.nb_rooms = nbRooms;
+    }
+
+    if (nbBedrooms) {
+      params.nb_bedrooms = nbBedrooms;
+    }
+
+    if (features) {
+      params.features = features;
+    }
+
+    if (page) {
+      params.page = page;
+    }
+
+    return this.http.get<OfferItem[]>(`${this.API_PREFIX}/search`, {
+      params,
     });
   }
 }
