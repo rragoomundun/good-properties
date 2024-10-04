@@ -46,3 +46,10 @@ h1 {
     background-image: url("/assets/images/grand-gaube.jpg");
   }
 }
+
+#articles {
+  img {
+    width: 100%;
+    box-shadow: 0 0 5px #333;
+  }
+}

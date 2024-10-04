@@ -39,4 +39,27 @@
       <h5>{{ "PAGES.HOME.HOUSES_GRAND_GAUBE" | translate }}</h5>
     </a>
   </div>
+
+  <br />
+
+  <h2>{{ "PAGES.HOME.ARTICLES" | translate }}</h2>
+
+  <div id="articles">
+    @for (i of [1, 2, 3, 4, 5]; track i) {
+      <div class="row mb-3">
+        <div class="col-12 col-sm-4">
+          <img src="/assets/images/apartments.jpg" alt="" />
+        </div>
+        <div class="col-12 col-sm-8">
+          <br class="d-sm-none" />
+          <h3>Title of the article</h3>
+          <p>
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Finibus vitae
+            fames volutpat dapibus odio. Magnis ultricies per accumsan amet
+            litora. Cras dignissim natoque praesent massa facilisi...
+          </p>
+        </div>
+      </div>
+    }
+  </div>
 </div>
