@@ -40,3 +40,14 @@ export const updateContactFailed = createAction(
   '[Settings Account Page] Update Contact Failed',
   props<{ errors: any }>(),
 );
+
+export const initDelete = createAction('[Settings Account Page] Init Delete');
+export const deleteAccount = createAction(
+  '[Settings Account Page] Delete Account',
+);
+export const deleteAccountSuccess = createAction(
+  '[Settings Account Page] Delete Account Success',
+);
+export const deleteAccountFailed = createAction(
+  '[Settings Account Page] Delete Account Failed',
+);

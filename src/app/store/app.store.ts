@@ -23,6 +23,7 @@ import {
   settingsAccountContactReducer,
   settingsAccountEmailReducer,
   settingsAccountPasswordReducer,
+  settingsAccountDeleteReducer,
 } from '../modules/settings/store/reducers';
 import { imageUploadReducer } from '../shared/store/image-upload/reducers';
 import { newOfferFeaturesReducer } from '../modules/new-offer/store/reducers';
@@ -40,6 +41,7 @@ import { ContactState } from '../shared/store/contact/contact.state';
 import { SettingsAccountEmailState } from '../modules/settings/store/settings-account-email.state';
 import { SettingsAccountPasswordState } from '../modules/settings/store/settings-account-password.state';
 import { SettingsAccountContactState } from '../modules/settings/store/settings-account-contact.state';
+import { SettingsAccountDeleteState } from '../modules/settings/store/settings-account-delete.state';
 import { ImageUploadState } from '../shared/store/image-upload/image-upload.state';
 import { NewOfferFeaturesState } from '../modules/new-offer/store/new-offer-features.state';
 import { OfferState } from '../modules/offer/store/offer.state';
@@ -57,6 +59,7 @@ export interface AppState {
   settingsAccountEmail: SettingsAccountEmailState;
   settingsAccountPassword: SettingsAccountPasswordState;
   settingsAccountContact: SettingsAccountContactState;
+  settingsAccountDelete: SettingsAccountDeleteState;
   imageUpload: ImageUploadState;
   newOfferFeatures: NewOfferFeaturesState;
   offer: OfferState;
@@ -75,6 +78,7 @@ export interface AppStore {
   settingsAccountEmail: ActionReducer<SettingsAccountEmailState, Action>;
   settingsAccountPassword: ActionReducer<SettingsAccountPasswordState, Action>;
   settingsAccountContact: ActionReducer<SettingsAccountContactState, Action>;
+  settingsAccountDelete: ActionReducer<SettingsAccountDeleteState, Action>;
   imageUpload: ActionReducer<ImageUploadState, Action>;
   newOfferFeatures: ActionReducer<NewOfferFeaturesState, Action>;
   offer: ActionReducer<OfferState, Action>;
@@ -93,6 +97,7 @@ export const appStore: AppStore = {
   settingsAccountEmail: settingsAccountEmailReducer,
   settingsAccountPassword: settingsAccountPasswordReducer,
   settingsAccountContact: settingsAccountContactReducer,
+  settingsAccountDelete: settingsAccountDeleteReducer,
   imageUpload: imageUploadReducer,
   newOfferFeatures: newOfferFeaturesReducer,
   offer: offerReducer,

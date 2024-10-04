@@ -31,7 +31,7 @@ export const loginFailed = createAction(
   props<{ errors: any }>(),
 );
 
-export const logout = createAction('[Header Component] Logout');
+export const logout = createAction('[Auth] Logout', props<{ delay: number }>());
 
 export const passwordForgotten = createAction(
   '[Password Forgotten Page] Password Forgotten',
