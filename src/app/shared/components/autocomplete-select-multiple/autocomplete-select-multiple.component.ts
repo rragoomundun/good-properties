@@ -106,6 +106,8 @@ export class AutocompleteSelectMultipleComponent
 
     this.availableItems = [];
     this.selected = 0;
+    this.inputEl().nativeElement.value = '';
+    this.control().setValue('');
   }
 
   @HostListener('window:resize')
