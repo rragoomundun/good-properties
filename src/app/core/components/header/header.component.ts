@@ -32,6 +32,6 @@ export class HeaderComponent {
   }
 
   onLogoutClick() {
-    this.store.dispatch(AuthActions.logout());
+    this.store.dispatch(AuthActions.logout({ delay: 0 }));
   }
 }

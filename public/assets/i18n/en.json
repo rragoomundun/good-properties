@@ -19,6 +19,8 @@
   "SUBMITTING": "Submitting...",
   "MODIFY": "Modify",
   "MODIFYING": "Modifying...",
+  "DELETE": "Delete",
+  "DELETING": "Deleting...",
   "CREATE": "Create",
   "CREATION": "Creation...",
   "PHOTOS": "Photos",
@@ -83,7 +85,8 @@
       "SEARCH_EXAMPLES": "Search Examples",
       "APARTMENT_EBENE": "Apartments in Ebene",
       "ROOMS_PORT_LOUIS": "Rooms in Port-Louis",
-      "HOUSES_GRAND_GAUBE": "Houses in Grand-Gaube"
+      "HOUSES_GRAND_GAUBE": "Houses in Grand-Gaube",
+      "ARTICLES": "Articles"
     },
     "SEARCH_RESULTS": {
       "NO_OFFERS": "No offers found."
@@ -163,7 +166,9 @@
         },
         "DELETE_ACCOUNT": {
           "TITLE": "Delete Account",
-          "NAME": "Delete Account"
+          "NAME": "Delete Account",
+          "MESSAGE": "Warning, you are about to delete your account on Good Properties. After this operation your account and all its data (including the published offers) will be deleted. It is not possible to recover from this operation. If you are sure that you want to proceed, click on the Delete button.",
+          "ACCOUNT_DELETED": "Your account has been deleted. You are going to be redirected..."
         }
       }
     }

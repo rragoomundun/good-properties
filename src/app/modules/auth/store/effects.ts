@@ -9,6 +9,7 @@ import {
   tap,
   mergeMap,
   concatMap,
+  delay,
 } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -80,8 +81,9 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
-      exhaustMap(() =>
+      exhaustMap((action) =>
         this.authService.logout().pipe(
+          delay(action.delay),
           map(() => UserActions.clearCurrentUser()),
           tap(() => {
             if (

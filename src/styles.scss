@@ -1,6 +1,10 @@
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+
 app-root {
   display: flex;
   flex-direction: column;
@@ -12,7 +16,7 @@ main {
   flex-direction: column;
   width: 100%;
   margin: auto;
-  margin-top: 0;
+  margin-top: 56px;
   flex-grow: 1;
 
   #main-container {
@@ -54,4 +58,33 @@ main {
       width: 33%;
     }
   }
+}
+
+/* Bootstrap customization */
+
+.card,
+.modal-content {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: 0px 0px 10px #333;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  border-radius: 0 !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0 !important;
+}
+
+.carousel-indicators button {
+  border-radius: 100%;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
 }

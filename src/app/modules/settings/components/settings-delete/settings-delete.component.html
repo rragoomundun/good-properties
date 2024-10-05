@@ -1,1 +1,18 @@
-<p>settings-delete works!</p>
+<p>{{ "PAGES.SETTINGS.TABS.DELETE_ACCOUNT.MESSAGE" | translate }}</p>
+
+<div class="text-end">
+  @if (status === "PENDING") {
+    <button (click)="onDeleteClick()" class="btn btn-danger">
+      {{ "DELETE" | translate }}
+    </button>
+  } @else if (status === "IN_PROGRESS") {
+    <button [disabled]="true" class="btn btn-danger">
+      <span class="fa-solid fa-spinner fa-spin"></span>
+      {{ "DELETING" | translate }}
+    </button>
+  } @else if (status === "SUCCESS") {
+    <p class="text-success">
+      {{ "PAGES.SETTINGS.TABS.DELETE_ACCOUNT.ACCOUNT_DELETED" | translate }}
+    </p>
+  }
+</div>

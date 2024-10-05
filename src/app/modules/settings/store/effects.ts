@@ -1,7 +1,9 @@
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, concatMap, catchError, of } from 'rxjs';
+import { map, concatMap, catchError, of, mergeMap } from 'rxjs';
 
+import * as AuthActions from '../../../modules/auth/store/actions';
 import * as SettingsActions from './actions';
 import * as UserActions from '../../../shared/store/user/actions';
 import * as ContactActions from '../../../shared/store/contact/actions';
@@ -12,7 +14,10 @@ import { SettingsService } from '../services/settings/settings.service';
 export class SettingsEffects {
   actions$: Actions = inject(Actions);
 
-  constructor(private settingsService: SettingsService) {}
+  constructor(
+    private router: Router,
+    private settingsService: SettingsService,
+  ) {}
 
   updateEmail$ = createEffect(() =>
     this.actions$.pipe(
@@ -66,6 +71,21 @@ export class SettingsEffects {
               of(SettingsActions.updateContactFailed({ errors: error.error })),
             ),
           ),
+      ),
+    ),
+  );
+
+  deleteAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.deleteAccount),
+      mergeMap(() =>
+        this.settingsService.deleteAccount().pipe(
+          concatMap(() => [
+            SettingsActions.deleteAccountSuccess(),
+            AuthActions.logout({ delay: 3000 }),
+          ]),
+          catchError(() => of(SettingsActions.deleteAccountFailed())),
+        ),
       ),
     ),
   );
