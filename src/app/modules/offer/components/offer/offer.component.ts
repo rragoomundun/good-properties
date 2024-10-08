@@ -8,9 +8,11 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Offer } from '../../../../shared/models/Offer.model';
 
+import { Status } from '../../../../shared/enums/status.enum';
+
 import { AppState } from '../../../../store/app.store';
 
-import { selectOffer } from '../../store/selectors';
+import { selectOffer, selectOfferStatus } from '../../store/selectors';
 
 import * as OfferActions from '../../store/actions';
 
@@ -25,8 +27,10 @@ import { MauritiusUtil } from '../../../../shared/utils/mauritius.util';
 })
 export class OfferComponent {
   offer$: Observable<Offer>;
+  status$: Observable<Status>;
 
   offer: Offer;
+  status: Status;
   title: string;
   city: string;
   description: string;
@@ -45,6 +49,7 @@ export class OfferComponent {
     );
 
     this.offer$ = this.store.select(selectOffer);
+    this.status$ = this.store.select(selectOfferStatus);
 
     this.offer$.subscribe((offer) => {
       this.offer = offer;
@@ -82,5 +87,6 @@ export class OfferComponent {
           .join('\n');
       }
     });
+    this.status$.subscribe((status) => (this.status = status));
   }
 }

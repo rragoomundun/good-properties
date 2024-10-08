@@ -1,5 +1,9 @@
 <div id="main-container" class="main-container-top-margin">
-  @if (!offer) {
+  @if (status === "IN_PROGRESS") {
+    <div class="text-center">
+      <span class="fa-solid fa-spinner fa-spin fa-2x"></span>
+    </div>
+  } @else if (!offer) {
     <div id="offer-not-found">
       <h2>{{ "PAGES.OFFER.NOT_FOUND" | translate }}</h2>
       <p>{{ "PAGES.OFFER.NOT_FOUND_MESSAGE" | translate }}</p>

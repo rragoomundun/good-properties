@@ -11,6 +11,10 @@ export const initialNewOfferFeaturesState: NewOfferFeaturesState = {
 
 export const newOfferFeaturesReducer = createReducer(
   initialNewOfferFeaturesState,
+  on(NewOfferActions.init, (state) => ({
+    ...state,
+    errors: null,
+  })),
   on(NewOfferActions.getFeaturesSuccess, (state, { features }) => ({
     ...state,
     features,

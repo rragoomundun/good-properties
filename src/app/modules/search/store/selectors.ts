@@ -20,3 +20,8 @@ export const selectSearchOffers = createSelector(
   searchState,
   (state: SearchState) => state.offers,
 );
+
+export const selectSearchStatus = createSelector(
+  searchState,
+  (state: SearchState) => state.status,
+);
