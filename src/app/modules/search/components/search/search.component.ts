@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { SearchFormComponent } from '../search-form/search-form.component';
@@ -12,16 +12,17 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
-export class SearchComponent {
+export class SearchComponent implements AfterViewInit {
+  displaySearchResults: boolean;
+
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  get displaySearchResults(): boolean {
+  ngAfterViewInit(): void {
     const { queryParams } = this.activatedRoute.snapshot;
 
-    return (
+    this.displaySearchResults =
       queryParams['type_of_good'] &&
       queryParams['transaction_type'] &&
-      queryParams['city_ids']
-    );
+      queryParams['city_ids'];
   }
 }
