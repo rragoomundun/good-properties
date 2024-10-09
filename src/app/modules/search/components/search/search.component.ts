@@ -18,6 +18,14 @@ export class SearchComponent implements AfterViewInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngAfterViewInit(): void {
+    this.setDisplaySearchResults();
+
+    this.activatedRoute.root.queryParams.subscribe(() =>
+      this.setDisplaySearchResults(),
+    );
+  }
+
+  setDisplaySearchResults(): void {
     const { queryParams } = this.activatedRoute.snapshot;
 
     this.displaySearchResults =
