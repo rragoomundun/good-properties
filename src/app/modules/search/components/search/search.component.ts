@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { SearchHomeComponent } from '../search-home/search-home.component';
@@ -18,19 +18,11 @@ export class SearchComponent implements AfterViewInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngAfterViewInit(): void {
-    this.setDisplaySearchResults();
-
-    this.activatedRoute.root.queryParams.subscribe(() =>
-      this.setDisplaySearchResults(),
-    );
-  }
-
-  setDisplaySearchResults(): void {
-    const { queryParams } = this.activatedRoute.snapshot;
-
-    this.displaySearchResults =
-      queryParams['type_of_good'] &&
-      queryParams['transaction_type'] &&
-      queryParams['city_ids'];
+    this.activatedRoute.root.queryParams.subscribe((queryParams: Params) => {
+      this.displaySearchResults =
+        queryParams['type_of_good'] &&
+        queryParams['transaction_type'] &&
+        queryParams['city_ids'];
+    });
   }
 }
