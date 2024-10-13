@@ -91,8 +91,9 @@ export class OfferComponent {
         // Set page title
         let pageTitle = `${this.title};`;
 
-        pageTitle += `${this.offer.square_meters} ${this.translateService.instant('SQUARE_METERS_MIN')}`;
-        pageTitle += `${this.translateService.instant('IN_MIN')} ${this.city}`;
+        pageTitle += ` ${this.offer.square_meters} ${this.translateService.instant('SQUARE_METERS')} `;
+        pageTitle += `${this.translateService.instant('IN')} ${this.city}`;
+        pageTitle += ` - ${this.translateService.instant('TITLE')}`;
 
         this.titleService.setTitle(pageTitle);
       }
