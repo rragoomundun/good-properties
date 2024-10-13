@@ -57,6 +57,7 @@
   "MAX": "Max",
   "SEARCH": "Search",
   "MORE_FILTERS": "More Filters",
+  "IN_MIN": "in",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -38,6 +39,7 @@ export class OfferComponent {
   constructor(
     private store: Store<AppState>,
     private activatedRoute: ActivatedRoute,
+    private titleService: Title,
     private translateService: TranslateService,
   ) {
     const offerId = this.activatedRoute.snapshot.paramMap.get('offerId');
@@ -85,6 +87,14 @@ export class OfferComponent {
           .split('\n')
           .map((paragraph) => `<p>${paragraph.trim()}</p>`)
           .join('\n');
+
+        // Set page title
+        let pageTitle = `${this.title};`;
+
+        pageTitle += `${this.offer.square_meters} ${this.translateService.instant('SQUARE_METERS_MIN')}`;
+        pageTitle += `${this.translateService.instant('IN_MIN')} ${this.city}`;
+
+        this.titleService.setTitle(pageTitle);
       }
     });
     this.status$.subscribe((status) => (this.status = status));
