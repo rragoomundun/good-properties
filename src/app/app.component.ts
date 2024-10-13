@@ -56,9 +56,13 @@ export class AppComponent implements OnInit {
       )
       .subscribe((title: string) => {
         if (title) {
-          this.titleService.setTitle(
-            `${this.translationService.instant(title)} - ${this.translationService.instant('TITLE')}`,
-          );
+	  if (title === 'TITLE') {
+	    this.titleService.setTitle(this.translationService.instant('TITLE'));
+	  } else {
+            this.titleService.setTitle(
+              `${this.translationService.instant(title)} - ${this.translationService.instant('TITLE')}`,
+            );
+	  }
         }
       });
 
