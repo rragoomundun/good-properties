@@ -2,14 +2,20 @@
   <h1>{{ "PAGES.MY_OFFERS.TITLE" | translate }}</h1>
   <hr />
 
-  @if (offers.length === 0) {
-    <p>{{ "PAGES.MY_OFFERS.NO_OFFERS" | translate }}</p>
+  @if (status === "IN_PROGRESS") {
+    <div class="text-center">
+      <span class="fa-solid fa-spinner fa-spin fa-2x"></span>
+    </div>
   } @else {
-    <app-offer [offers]="offers"></app-offer>
-  }
+    @if (offers.length === 0) {
+      <p>{{ "PAGES.MY_OFFERS.NO_OFFERS" | translate }}</p>
+    } @else {
+      <app-offer [offers]="offers"></app-offer>
+    }
 
-  @if (meta && meta.nb_pages) {
-    <br />
-    <app-pagination [nbPages]="meta.nb_pages"></app-pagination>
+    @if (meta && meta.nb_pages) {
+      <br />
+      <app-pagination [nbPages]="meta.nb_pages"></app-pagination>
+    }
   }
 </div>

@@ -109,6 +109,7 @@ export class NewOfferComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(NewOfferActions.init());
     this.store.dispatch(NewOfferActions.getFeatures());
   }
 

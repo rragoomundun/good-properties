@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -8,9 +9,11 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Offer } from '../../../../shared/models/Offer.model';
 
+import { Status } from '../../../../shared/enums/status.enum';
+
 import { AppState } from '../../../../store/app.store';
 
-import { selectOffer } from '../../store/selectors';
+import { selectOffer, selectOfferStatus } from '../../store/selectors';
 
 import * as OfferActions from '../../store/actions';
 
@@ -25,8 +28,10 @@ import { MauritiusUtil } from '../../../../shared/utils/mauritius.util';
 })
 export class OfferComponent {
   offer$: Observable<Offer>;
+  status$: Observable<Status>;
 
   offer: Offer;
+  status: Status;
   title: string;
   city: string;
   description: string;
@@ -34,6 +39,7 @@ export class OfferComponent {
   constructor(
     private store: Store<AppState>,
     private activatedRoute: ActivatedRoute,
+    private titleService: Title,
     private translateService: TranslateService,
   ) {
     const offerId = this.activatedRoute.snapshot.paramMap.get('offerId');
@@ -45,6 +51,7 @@ export class OfferComponent {
     );
 
     this.offer$ = this.store.select(selectOffer);
+    this.status$ = this.store.select(selectOfferStatus);
 
     this.offer$.subscribe((offer) => {
       this.offer = offer;
@@ -80,7 +87,17 @@ export class OfferComponent {
           .split('\n')
           .map((paragraph) => `<p>${paragraph.trim()}</p>`)
           .join('\n');
+
+        // Set page title
+        let pageTitle = `${this.title};`;
+
+        pageTitle += ` ${this.offer.square_meters} ${this.translateService.instant('SQUARE_METERS')} `;
+        pageTitle += `${this.translateService.instant('IN')} ${this.city}`;
+        pageTitle += ` - ${this.translateService.instant('TITLE')}`;
+
+        this.titleService.setTitle(pageTitle);
       }
     });
+    this.status$.subscribe((status) => (this.status = status));
   }
 }
