@@ -5,6 +5,11 @@ import { Title } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { DateTime } from 'luxon';
+import { marked } from 'marked';
+
+import { DateService } from '../../../../shared/services/date/date.service';
+
 import { AppState } from '../../../../store/app.store';
 
 import { selectArticle, selectArticleStatus } from '../../store/selectors';
@@ -27,6 +32,8 @@ export class ArticleComponent {
   status$: Observable<Status>;
 
   article: Article;
+  content: string;
+  date: string;
   status: Status;
 
   constructor(
@@ -34,6 +41,7 @@ export class ArticleComponent {
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
+    private dateService: DateService,
   ) {
     const { articleId } = this.activatedRoute.snapshot.params;
 
@@ -47,6 +55,16 @@ export class ArticleComponent {
 
       if (this.article) {
         let pageTitle = `${this.article.title} - ${this.translateService.instant('TITLE')}`;
+
+        const date = new Date(this.article.date);
+        this.date = this.dateService.dt
+          .set({
+            day: date.getDate(),
+            month: date.getMonth() + 1,
+            year: date.getFullYear(),
+          })
+          .toLocaleString(DateTime.DATE_FULL);
+        this.content = <string>marked.parse(this.article.content);
 
         this.titleService.setTitle(pageTitle);
       }

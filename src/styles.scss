@@ -60,6 +60,11 @@ main {
   }
 }
 
+.app-image-ratio-16x9 {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
 /* Bootstrap customization */
 
 .card,

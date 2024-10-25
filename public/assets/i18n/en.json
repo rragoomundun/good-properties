@@ -59,6 +59,7 @@
   "MORE_FILTERS": "More Filters",
   "IN_MIN": "in",
   "IN": "In",
+  "BY": "By",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",

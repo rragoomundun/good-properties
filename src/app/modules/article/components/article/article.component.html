@@ -8,5 +8,23 @@
       <h2>{{ "PAGES.ARTICLE.NOT_FOUND" | translate }}</h2>
       <p>{{ "PAGES.ARTICLE.NOT_FOUND_MESSAGE" | translate }}</p>
     </div>
-  } @else {}
+  } @else {
+    <img
+      [src]="article.image"
+      alt=""
+      id="cover-image"
+      class="app-image-ratio-16x9"
+    />
+    <h2>{{ article.title }}</h2>
+
+    <div>
+      <span>{{ "BY" | translate }} {{ article.author }}</span>
+      <span>&nbsp;·&nbsp;</span>
+      <span>{{ date }}</span>
+    </div>
+
+    <br />
+
+    <div id="content" [innerHTML]="content"></div>
+  }
 </div>
