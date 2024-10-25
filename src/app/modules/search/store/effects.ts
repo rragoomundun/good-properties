@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, concatMap, map, of } from 'rxjs';
 
 import { OfferService } from '../../../shared/services/offer/offer.service';
+import { ArticleService } from '../../../shared/services/article/article.service';
 
 import * as SearchActions from './actions';
 
@@ -10,7 +11,10 @@ import * as SearchActions from './actions';
 export class SearchEffects {
   actions$: Actions = inject(Actions);
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private articleService: ArticleService,
+  ) {}
 
   getFeatures$ = createEffect(() =>
     this.actions$.pipe(
@@ -71,6 +75,18 @@ export class SearchEffects {
             map((offers) => SearchActions.searchOffersSuccess({ offers })),
             catchError((error) => of(SearchActions.searchOffersFailed())),
           ),
+      ),
+    ),
+  );
+
+  getArticles$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SearchActions.getArticles),
+      concatMap(() =>
+        this.articleService.getAllArticles().pipe(
+          map((articles) => SearchActions.getArticlesSuccess({ articles })),
+          catchError(() => of(SearchActions.getArticlesFailed())),
+        ),
       ),
     ),
   );

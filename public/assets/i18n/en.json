@@ -57,6 +57,9 @@
   "MAX": "Max",
   "SEARCH": "Search",
   "MORE_FILTERS": "More Filters",
+  "IN_MIN": "in",
+  "IN": "In",
+  "BY": "By",
   "ERRORS": {
     "EMAIL": {
       "INVALID_EMAIL": "Please add a valid e-mail.",
@@ -140,6 +143,10 @@
         "NO_CONTACT_ADD": "Add contact informations.",
         "CREATION_FAILED": "Cannot create offer. Try again later."
       }
+    },
+    "ARTICLE": {
+      "NOT_FOUND": "Article Not Found",
+      "NOT_FOUND_MESSAGE": "This article cannot be found."
     },
     "OFFER": {
       "NOT_FOUND": "Offer Not Found",

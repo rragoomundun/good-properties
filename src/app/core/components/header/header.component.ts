@@ -31,6 +31,16 @@ export class HeaderComponent {
     this.user$.subscribe((user) => (this.user = user));
   }
 
+  hideHamburgerMenu(): void {
+    const navbarTogglerEl = <HTMLButtonElement>(
+      document.querySelector('.navbar-toggler')
+    );
+
+    if (navbarTogglerEl) {
+      navbarTogglerEl.click();
+    }
+  }
+
   onLogoutClick() {
     this.store.dispatch(AuthActions.logout({ delay: 0 }));
   }

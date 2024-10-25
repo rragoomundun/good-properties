@@ -2,6 +2,8 @@ import { createAction, props } from '@ngrx/store';
 
 import { Features } from '../../../shared/models/Features.model';
 
+export const init = createAction('[New Offer Page] Init');
+
 export const getFeatures = createAction('[New Offer Page] Get Features');
 export const getFeaturesSuccess = createAction(
   '[New Offer Page] Get Features Success',

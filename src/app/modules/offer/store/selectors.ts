@@ -11,6 +11,11 @@ export const selectOffer = createSelector(
   (state: OfferState) => state.offer,
 );
 
+export const selectOfferStatus = createSelector(
+  offerState,
+  (state: OfferState) => state.status,
+);
+
 export const selectOfferErrors = createSelector(
   offerState,
   (state: OfferState) => state.errors,

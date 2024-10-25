@@ -12,9 +12,15 @@ import { PlatformService } from '../../../../shared/services/platform/platform.s
 import { MyOffersMeta } from '../../../../shared/models/MyOffersMeta.model';
 import { OfferItem } from '../../../../shared/models/OfferItem.model';
 
+import { Status } from '../../../../shared/enums/status.enum';
+
 import { AppState } from '../../../../store/app.store';
 
-import { selectMyOffers, selectMyOffersMeta } from '../../store/selectors';
+import {
+  selectMyOffers,
+  selectMyOffersMeta,
+  selectMyOffersStatus,
+} from '../../store/selectors';
 
 import * as MyOffersActions from '../../store/actions';
 
@@ -28,9 +34,11 @@ import * as MyOffersActions from '../../store/actions';
 export class MyOffersComponent implements OnDestroy {
   meta$: Observable<MyOffersMeta>;
   offers$: Observable<OfferItem[]>;
+  status$: Observable<Status>;
 
   meta: MyOffersMeta;
   offers: OfferItem[];
+  status: Status;
 
   routerEventsSubscription: Subscription;
 
@@ -44,9 +52,11 @@ export class MyOffersComponent implements OnDestroy {
 
     this.meta$ = this.store.select(selectMyOffersMeta);
     this.offers$ = this.store.select(selectMyOffers);
+    this.status$ = this.store.select(selectMyOffersStatus);
 
     this.meta$.subscribe((meta) => (this.meta = meta));
     this.offers$.subscribe((offers) => (this.offers = offers));
+    this.status$.subscribe((status) => (this.status = status));
 
     this.getMyOffers();
 

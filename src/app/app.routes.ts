@@ -12,6 +12,11 @@ export const routes: Routes = [
       import('./modules/search/search.module').then((m) => m.SearchModule),
   },
   {
+    path: 'article',
+    loadChildren: () =>
+      import('./modules/article/article.module').then((m) => m.ArticleModule),
+  },
+  {
     path: 'offer',
     loadChildren: () =>
       import('./modules/offer/offer.module').then((m) => m.OfferModule),

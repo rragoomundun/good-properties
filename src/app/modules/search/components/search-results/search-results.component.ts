@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { Status } from '../../../../shared/enums/status.enum';
+
 import { SearchMeta } from '../../../../shared/models/SearchMeta.model';
 import { OfferItem } from '../../../../shared/models/OfferItem.model';
 
@@ -12,7 +14,11 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 
 import { AppState } from '../../../../store/app.store';
 
-import { selectSearchMeta, selectSearchOffers } from '../../store/selectors';
+import {
+  selectSearchMeta,
+  selectSearchOffers,
+  selectSearchStatus,
+} from '../../store/selectors';
 
 import * as SearchActions from '../../store/actions';
 
@@ -26,9 +32,11 @@ import * as SearchActions from '../../store/actions';
 export class SearchResultsComponent {
   meta$: Observable<SearchMeta>;
   offers$: Observable<OfferItem[]>;
+  status$: Observable<Status>;
 
   meta: SearchMeta;
   offers: OfferItem[];
+  status: Status;
 
   constructor(
     private store: Store<AppState>,
@@ -68,8 +76,10 @@ export class SearchResultsComponent {
 
     this.meta$ = this.store.select(selectSearchMeta);
     this.offers$ = this.store.select(selectSearchOffers);
+    this.status$ = this.store.select(selectSearchStatus);
 
     this.meta$.subscribe((meta) => (this.meta = meta));
     this.offers$.subscribe((offers) => (this.offers = offers));
+    this.status$.subscribe((status) => (this.status = status));
   }
 }

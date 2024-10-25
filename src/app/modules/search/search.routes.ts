@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SearchComponent } from './components/search/search.component';
 
-const routes: Routes = [{ path: '', component: SearchComponent }];
+const routes: Routes = [
+  { path: '', component: SearchComponent, data: { title: 'TITLE' } },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

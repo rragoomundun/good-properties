@@ -45,18 +45,24 @@
   <h2>{{ "PAGES.HOME.ARTICLES" | translate }}</h2>
 
   <div id="articles">
-    @for (i of [1, 2, 3, 4, 5]; track i) {
+    @for (article of articles; track article) {
       <div class="row mb-3">
         <div class="col-12 col-sm-4">
-          <img src="/assets/images/apartments.jpg" alt="" />
+          <a [routerLink]="['article', article.id]">
+            <img [src]="article.image" alt="" />
+          </a>
         </div>
         <div class="col-12 col-sm-8">
           <br class="d-sm-none" />
-          <h3>Title of the article</h3>
+          <h3>
+            <a [routerLink]="['article', article.id]">
+              {{ article.title }}
+            </a>
+          </h3>
           <p>
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Finibus vitae
-            fames volutpat dapibus odio. Magnis ultricies per accumsan amet
-            litora. Cras dignissim natoque praesent massa facilisi...
+            <a [routerLink]="['article', article.id]">
+              {{ article.content }}
+            </a>
           </p>
         </div>
       </div>

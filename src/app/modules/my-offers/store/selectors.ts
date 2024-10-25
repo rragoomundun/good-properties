@@ -15,3 +15,8 @@ export const selectMyOffers = createSelector(
   myOffersState,
   (state: MyOffersState) => state.offers,
 );
+
+export const selectMyOffersStatus = createSelector(
+  myOffersState,
+  (state: MyOffersState) => state.status,
+);
