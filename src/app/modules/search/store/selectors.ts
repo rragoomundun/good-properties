@@ -1,6 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
 import { SearchState } from './search.state';
+import { ArticleState } from './article.state';
 
 import { AppState } from '../../../store/app.store';
 
@@ -24,4 +25,11 @@ export const selectSearchOffers = createSelector(
 export const selectSearchStatus = createSelector(
   searchState,
   (state: SearchState) => state.status,
+);
+
+const articleState = (state: AppState) => state.articles;
+
+export const selectHomepageArticles = createSelector(
+  articleState,
+  (state: ArticleState) => state.articles,
 );

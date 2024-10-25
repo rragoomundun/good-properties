@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { Features } from '../../../shared/models/Features.model';
 import { SearchMeta } from '../../../shared/models/SearchMeta.model';
 import { OfferItem } from '../../../shared/models/OfferItem.model';
+import { Article } from '../../../shared/models/Article.model';
 
 export const getFeatures = createAction('[Search Form Component] Get Features');
 export const getFeaturesSuccess = createAction(
@@ -58,4 +59,13 @@ export const searchOffersSuccess = createAction(
 );
 export const searchOffersFailed = createAction(
   '[Search Results Component] Search Offers Failed',
+);
+
+export const getArticles = createAction('[Search Home Component] Get Articles');
+export const getArticlesSuccess = createAction(
+  '[Search Home Component] Get Articles Success',
+  props<{ articles: Article[] }>(),
+);
+export const getArticlesFailed = createAction(
+  '[Search Form Component] Get Articles Failed',
 );
