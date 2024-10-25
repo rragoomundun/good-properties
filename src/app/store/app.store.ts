@@ -9,6 +9,7 @@ import { NewOfferEffects } from '../modules/new-offer/store/effects';
 import { OfferEffects } from '../modules/offer/store/effects';
 import { MyOfferEffects } from '../modules/my-offers/store/effects';
 import { SearchEffects } from '../modules/search/store/effects';
+import { ArticleEffects } from '../modules/article/store/effects';
 
 import {
   registerReducer,
@@ -33,6 +34,7 @@ import {
   articlesReducer,
   searchReducer,
 } from '../modules/search/store/reducers';
+import { articleReducer } from '../modules/article/store/reducers';
 
 import { RegisterState } from '../modules/auth/store/register.state';
 import { RegisterConfirmState } from '../modules/auth/store/register-confirm.state';
@@ -51,6 +53,7 @@ import { OfferState } from '../modules/offer/store/offer.state';
 import { MyOffersState } from '../modules/my-offers/store/my-offers.state';
 import { SearchState } from '../modules/search/store/search.state';
 import { ArticleState } from '../modules/search/store/article.state';
+import { ArticleState as ArticleArticleState } from '../modules/article/store/article.state';
 
 export interface AppState {
   register: RegisterState;
@@ -70,6 +73,7 @@ export interface AppState {
   myOffers: MyOffersState;
   search: SearchState;
   articles: ArticleState;
+  article: ArticleArticleState;
 }
 
 export interface AppStore {
@@ -90,6 +94,7 @@ export interface AppStore {
   myOffers: ActionReducer<MyOffersState, Action>;
   search: ActionReducer<SearchState, Action>;
   articles: ActionReducer<ArticleState, Action>;
+  article: ActionReducer<ArticleArticleState, Action>;
 }
 
 export const appStore: AppStore = {
@@ -110,6 +115,7 @@ export const appStore: AppStore = {
   myOffers: myOffersReducer,
   search: searchReducer,
   articles: articlesReducer,
+  article: articleReducer,
 };
 
 export const appEffects = [
@@ -122,4 +128,5 @@ export const appEffects = [
   OfferEffects,
   MyOfferEffects,
   SearchEffects,
+  ArticleEffects,
 ];
