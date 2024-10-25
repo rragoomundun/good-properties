@@ -143,6 +143,10 @@
         "CREATION_FAILED": "Cannot create offer. Try again later."
       }
     },
+    "ARTICLE": {
+      "NOT_FOUND": "Article Not Found",
+      "NOT_FOUND_MESSAGE": "This article cannot be found."
+    },
     "OFFER": {
       "NOT_FOUND": "Offer Not Found",
       "NOT_FOUND_MESSAGE": "This offer cannot be found."

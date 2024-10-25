@@ -1,0 +1,12 @@
+<div id="main-container" class="main-container-top-margin">
+  @if (status === "IN_PROGRESS") {
+    <div class="text-center">
+      <span class="fa-solid fa-spinner fa-spin fa-2x"></span>
+    </div>
+  } @else if (!article) {
+    <div id="article-not-found">
+      <h2>{{ "PAGES.ARTICLE.NOT_FOUND" | translate }}</h2>
+      <p>{{ "PAGES.ARTICLE.NOT_FOUND_MESSAGE" | translate }}</p>
+    </div>
+  } @else {}
+</div>
