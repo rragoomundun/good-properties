@@ -1,3 +1,3 @@
 export const environment = {
-  API_URL: 'https://api-goodproperties.r3tests.net/v1',
+  API_URL: 'http://52.208.85.133:5001/v1',
 };
