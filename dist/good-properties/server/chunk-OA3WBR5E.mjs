@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{R as o,U as e,ac as a,bc as f,sa as i}from"./chunk-NYYUEVQ5.mjs";var I=(()=>{class r{platformId;constructor(t){this.platformId=t}isPlatformBrowser(){return a(this.platformId)}isPlatformServer(){return f(this.platformId)}static \u0275fac=function(n){return new(n||r)(e(i))};static \u0275prov=o({token:r,factory:r.\u0275fac,providedIn:"root"})}return r})();export{I as a};
