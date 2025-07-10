@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -38,6 +38,18 @@ export class HeaderComponent {
 
     if (navbarTogglerEl) {
       navbarTogglerEl.click();
+    }
+  }
+
+  @HostListener('window:click', ['$event'])
+  onWindowClick(event: any): void {
+    const header = document.querySelector('header');
+    const navbarTogglerEl = document.querySelector(
+      '.navbar-collapse.collapse.show',
+    );
+
+    if (header?.contains(event.target) === false && navbarTogglerEl) {
+      this.hideHamburgerMenu();
     }
   }
 
