@@ -1,0 +1,1 @@
+import{M as o,P as e,ga as i,vb as a,wb as f}from"./chunk-ECAXMYT4.js";var I=(()=>{class r{platformId;constructor(t){this.platformId=t}isPlatformBrowser(){return a(this.platformId)}isPlatformServer(){return f(this.platformId)}static \u0275fac=function(n){return new(n||r)(e(i))};static \u0275prov=o({token:r,factory:r.\u0275fac,providedIn:"root"})}return r})();export{I as a};

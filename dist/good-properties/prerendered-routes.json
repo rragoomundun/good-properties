@@ -1,0 +1,18 @@
+{
+  "routes": [
+    "/",
+    "/article",
+    "/auth",
+    "/auth/login",
+    "/auth/password",
+    "/auth/password/forgotten",
+    "/auth/register",
+    "/my-offers",
+    "/new-offer",
+    "/offer",
+    "/settings",
+    "/settings/account",
+    "/settings/contact",
+    "/settings/delete"
+  ]
+}
