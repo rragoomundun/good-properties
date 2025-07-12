@@ -36,7 +36,7 @@ export class HeaderComponent {
       document.querySelector('.navbar-toggler')
     );
 
-    if (navbarTogglerEl) {
+    if (navbarTogglerEl && window.innerWidth < 992) {
       navbarTogglerEl.click();
     }
   }
