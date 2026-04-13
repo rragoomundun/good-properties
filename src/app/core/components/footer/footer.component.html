@@ -2,26 +2,15 @@
   <hr />
 
   <div class="row">
-    <div class="col-12 col-md-3 text-center text-md-start">
+    <div class="col-12 col-md-6 text-center text-md-start">
       <a routerLink="/" class="app-logo app-link-grey">
         © {{ "TITLE" | translate }}
       </a>
-    </div>
-    <div class="col-12 col-md-3 text-center text-md-start">
-      <a
-        href="javascript:void(0)"
-        class="app-link-grey fa-brands fa-facebook"
-      ></a>
-      <a
-        href="javascript:void(0)"
-        class="app-link-grey fa-brands fa-twitter"
-      ></a>
-      <a
-        href="javascript:void(0)"
-        class="app-link-grey fa-brands fa-instagram"
-      ></a>
-    </div>
-    <div class="col-12 col-md-6 text-center text-md-end">
+
+      <span class="d-none d-md-inline">·</span>
+
+      <br class="d-md-none mb-1" />
+
       <a href="javascript:void(0)" class="app-link-grey">
         {{ "TOS" | translate }}
       </a>
@@ -31,6 +20,35 @@
       <a href="javascript:void(0)" class="app-link-grey">
         {{ "PRIVACY_POLICY" | translate }}
       </a>
+    </div>
+
+    <!-- <div class="col-12 col-md-6 text-center text-md-start">
+      <span>·</span>
+
+      <a href="javascript:void(0)" class="app-link-grey">
+        {{ "TOS" | translate }}
+      </a>
+
+      <span>·</span>
+
+      <a href="javascript:void(0)" class="app-link-grey">
+        {{ "PRIVACY_POLICY" | translate }}
+      </a>
+    </div> -->
+
+    <div class="col-12 col-md-6 mt-2 mt-md-0 text-center text-md-end">
+      <a
+        href="javascript:void(0)"
+        class="app-link-grey fa-brands fa-facebook me-2"
+      ></a>
+      <a
+        href="javascript:void(0)"
+        class="app-link-grey fa-brands fa-twitter me-2"
+      ></a>
+      <a
+        href="javascript:void(0)"
+        class="app-link-grey fa-brands fa-instagram"
+      ></a>
     </div>
   </div>
 </footer>
