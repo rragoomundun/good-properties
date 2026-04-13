@@ -14,30 +14,30 @@
   div {
     @media screen and (width >= 768px) {
       > div:nth-child(1) {
-        min-width: 150px;
-        max-width: 150px;
+        // min-width: 150px;
+        // max-width: 150px;
 
         a {
-          font-size: 1.2rem;
+          // font-size: 1.2rem;
         }
       }
     }
 
     > div:nth-child(1) {
-      a {
-        font-size: 1.2rem;
+      a:not(:first-of-type) {
+        // font-size: 1.2rem;
+        font-size: 0.9rem;
       }
     }
 
     > div:nth-child(2) {
-      flex-grow: 1;
-
       a {
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
+        font-size: 1.2rem;
       }
 
       a:not(:first-of-type) {
-        margin-left: 1rem;
+        // margin-left: 1rem;
       }
     }
 
